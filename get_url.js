@@ -1,0 +1,1 @@
+fetch('https://www.pexels.com/search/videos/office/').then(res=>res.text()).then(t=>{ const m = t.match(/https:\/\/videos\.pexels\.com\/video-files[^\"]+\.mp4/); if(m) console.log(m[0]); else console.log('no match') })

@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Manrope", system-ui, sans-serif;
+  
+  --color-elios-gold: #C9A227;
+  --color-elios-navy: #0B1F3A;
+  --color-elios-light: #F7F7F5;
+  --color-elios-border: #E7E7E7;
+  --color-elios-soft: #F2F2EF;
+
+  --color-primary: var(--color-elios-gold);
+  --color-secondary: var(--color-elios-navy);
+}
+
+@layer base {
+  body {
+    @apply font-sans text-black bg-white antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-black tracking-tight;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.logo-elios{
+  width:150px
+}
+.logo-footer{
+  width: 130px;
+}
+
+
+/* common css will be here */

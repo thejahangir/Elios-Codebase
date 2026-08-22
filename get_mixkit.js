@@ -1,0 +1,1 @@
+fetch('https://mixkit.co/free-stock-video/office/').then(r=>r.text()).then(t=>{ const urls = t.match(/https:\/\/assets\.mixkit\.co\/videos\/[^\"]+\.mp4/g); console.log(Array.from(new Set(urls)).slice(0, 5)) })

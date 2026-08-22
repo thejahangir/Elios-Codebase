@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Send, Globe, ArrowRight } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Globe } from 'lucide-react';
 
 const offices = [
   {
@@ -161,9 +161,6 @@ const ContactPage = () => {
                 With a footprint spanning North America, the Middle East, and Asia, our global delivery model ensures 24/7 support and localized enterprise expertise.
               </p>
             </div>
-            <button className="flex items-center gap-2 text-[#0B1F3A] font-bold hover:text-[#C9A227] transition-colors group">
-              View Global Map <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-            </button>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

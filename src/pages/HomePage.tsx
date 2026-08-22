@@ -172,9 +172,9 @@ const HomePage = () => {
                <img 
                  src={executiveWorkingImg} 
                  alt="Executive Leadership" 
-                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                 className="absolute inset-0 w-full h-full object-cover block z-0 transition-transform duration-700 group-hover:scale-105"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A]/80 via-transparent to-transparent opacity-80" />
+               <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0B1F3A]/80 via-transparent to-transparent opacity-80 pointer-events-none" />
                <div className="absolute bottom-10 left-10 text-white z-10">
                  <div className="flex items-center gap-4 mb-3">
                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">

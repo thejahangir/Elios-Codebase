@@ -108,7 +108,7 @@ const TeamPage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-12 lg:gap-x-20">
-            {teamMembers.map((member, idx) => (
+            {teamMembers.map((member) => (
               <motion.div 
                 layoutId={`card-${member.id}`}
                 key={member.id} 

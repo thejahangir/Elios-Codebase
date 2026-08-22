@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import { Briefcase, MapPin, ArrowRight, Star, Heart, Zap, Coffee } from 'lucide-react';
 import InnerPageHero from '../components/InnerPageHero';

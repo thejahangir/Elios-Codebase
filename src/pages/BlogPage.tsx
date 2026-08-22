@@ -1,6 +1,6 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, User, Tag } from 'lucide-react';
+import { ArrowRight, Calendar, User } from 'lucide-react';
 import InnerPageHero from '../components/InnerPageHero';
 
 const blogPosts = [

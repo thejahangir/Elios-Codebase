@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, Users, Zap, Cloud, BarChart, Settings, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Target, Users, Cloud, BarChart, Settings, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const defaultHeroBg = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80";

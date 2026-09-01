@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Search, Layers, Layout, MousePointer, Sparkles, GitCommit, ArrowRight, Lightbulb, Users, CheckCircle } from 'lucide-react';
+import { Search, Layers, Layout, Sparkles, ArrowRight, Lightbulb, Users, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const customEasing = [0.16, 1, 0.3, 1] as any;

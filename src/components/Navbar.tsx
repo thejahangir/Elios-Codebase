@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Database, Cloud, Code, Activity, Users, Smartphone, Network, Shield, Settings, Building, LineChart, BrainCircuit, Cable, Server, Cpu, Radio, Zap, LayoutTemplate, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Database, Cloud, Code, Activity, Users, Shield, Settings, Building, Cpu, ArrowRight } from 'lucide-react';
 import LogoEliosLight from '../assets/elios-logo-1.png';
 import LogoEliosDark from '../assets/elios-logo-2.png';
 
@@ -20,22 +20,22 @@ const servicesList = [
   { name: 'Architectural Workshops', path: '/architectural-workshops', icon: <Building className="w-5 h-5" /> },
 ];
 
-const technologiesList = [
-  { name: 'Data & Analytics', path: '/data-analytics', icon: <LineChart className="w-5 h-5" /> },
-  { name: 'AI & Data Science', path: '/ai-data-science', icon: <BrainCircuit className="w-5 h-5" /> },
-  { name: 'Cloud & Integration', path: '/cloud-integration', icon: <Cable className="w-5 h-5" /> },
-  { name: 'IBM OMS', path: '/ibm-oms', icon: <Server className="w-5 h-5" /> },
-  { name: 'BPM & Automation', path: '/bpm-automation', icon: <Cpu className="w-5 h-5" /> },
-  { name: 'API Edge & IoT', path: '/api-edge-iot', icon: <Radio className="w-5 h-5" /> },
-  { name: 'Digital Transform', path: '/digital-transformation', icon: <Zap className="w-5 h-5" /> },
-  { name: 'ERP', path: '/erp', icon: <Database className="w-5 h-5" /> },
-  { name: 'Digital Experience', path: '/digital-experience', icon: <LayoutTemplate className="w-5 h-5" /> },
-  { name: 'EAM & IOT', path: '/eam-iot', icon: <Radio className="w-5 h-5" /> },
-  { name: 'Oracle Practices', path: '/oracle-practices', icon: <Database className="w-5 h-5" /> },
-  { name: 'Pega Practices', path: '/pega-practices', icon: <Settings className="w-5 h-5" /> },
-  { name: 'Veeva Practices', path: '/veeva-practices', icon: <Activity className="w-5 h-5" /> },
-  { name: 'Cyber Security Practices', path: '/cyber-security', icon: <Shield className="w-5 h-5" /> },
-];
+// const technologiesList = [
+//   { name: 'Data & Analytics', path: '/data-analytics', icon: <LineChart className="w-5 h-5" /> },
+//   { name: 'AI & Data Science', path: '/ai-data-science', icon: <BrainCircuit className="w-5 h-5" /> },
+//   { name: 'Cloud & Integration', path: '/cloud-integration', icon: <Cable className="w-5 h-5" /> },
+//   { name: 'IBM OMS', path: '/ibm-oms', icon: <Server className="w-5 h-5" /> },
+//   { name: 'BPM & Automation', path: '/bpm-automation', icon: <Cpu className="w-5 h-5" /> },
+//   { name: 'API Edge & IoT', path: '/api-edge-iot', icon: <Radio className="w-5 h-5" /> },
+//   { name: 'Digital Transform', path: '/digital-transformation', icon: <Zap className="w-5 h-5" /> },
+//   { name: 'ERP', path: '/erp', icon: <Database className="w-5 h-5" /> },
+//   { name: 'Digital Experience', path: '/digital-experience', icon: <LayoutTemplate className="w-5 h-5" /> },
+//   { name: 'EAM & IOT', path: '/eam-iot', icon: <Radio className="w-5 h-5" /> },
+//   { name: 'Oracle Practices', path: '/oracle-practices', icon: <Database className="w-5 h-5" /> },
+//   { name: 'Pega Practices', path: '/pega-practices', icon: <Settings className="w-5 h-5" /> },
+//   { name: 'Veeva Practices', path: '/veeva-practices', icon: <Activity className="w-5 h-5" /> },
+//   { name: 'Cyber Security Practices', path: '/cyber-security', icon: <Shield className="w-5 h-5" /> },
+// ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);

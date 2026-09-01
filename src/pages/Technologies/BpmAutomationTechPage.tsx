@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Cpu, Settings, Target, Layers, ArrowRight, CheckCircle2, Smartphone, Zap } from 'lucide-react';
+import { Cpu, ArrowRight, CheckCircle2, Smartphone, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const defaultHeroBg = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80";
@@ -96,7 +96,7 @@ const BpmAutomationTechPage = () => {
                 </p>
               </motion.div>
               
-              <motion.div {...fadeIn} delay={0.2} className="bg-white p-8 md:p-10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100">
+              <motion.div {...fadeIn} transition={{ duration: 0.6, delay: 0.2 }} className="bg-white p-8 md:p-10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100">
                 <h5 className="font-bold text-gray-900 mb-6 text-xl">Why Appian is an ideal choice:</h5>
                 <p className="text-gray-500 mb-6">Appian is an ideal choice for creating the customized mobile apps as per your specific requirements because:</p>
                 <ul className="space-y-4">
@@ -114,7 +114,7 @@ const BpmAutomationTechPage = () => {
           {/* Pega */}
           <div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <motion.div {...fadeIn} delay={0.2} className="bg-white p-8 md:p-10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 lg:order-1 order-2">
+              <motion.div {...fadeIn} transition={{ duration: 0.6, delay: 0.2 }} className="bg-white p-8 md:p-10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 lg:order-1 order-2">
                 <h5 className="font-bold text-gray-900 mb-6 text-xl">Pega BPM Capabilities:</h5>
                 <p className="text-gray-500 mb-6">Pega BPM supports the process management, from start to end, so that an organization can perform efficiently in order to create value for its customers:</p>
                 <ul className="space-y-4">

@@ -6,17 +6,18 @@ import LogoEliosLight from '../assets/elios-logo-1.png';
 import LogoEliosDark from '../assets/elios-logo-2.png';
 
 const servicesList = [
-  { name: 'SAP ERP Services', path: '/sap-erp', icon: <Database className="w-5 h-5" /> },
-  { name: 'Migration', path: '/migration', icon: <Cloud className="w-5 h-5" /> },
-  { name: 'App Development', path: '/application-development', icon: <Code className="w-5 h-5" /> },
-  { name: 'Life Cycle Mgmt', path: '/life-cycle-management', icon: <Activity className="w-5 h-5" /> },
-  { name: 'Recruitment & RPO', path: '/recruitment-rpo', icon: <Users className="w-5 h-5" /> },
-  { name: 'Cloud & Devops', path: '/cloud-devops', icon: <Cloud className="w-5 h-5" /> },
-  { name: 'Enterprise Mobility', path: '/enterprise-mobility', icon: <Smartphone className="w-5 h-5" /> },
-  { name: 'Network Infra', path: '/network-infrastructure', icon: <Network className="w-5 h-5" /> },
+  { name: 'SAP Service', path: '/sap-erp', icon: <Database className="w-5 h-5" /> },
+  { name: 'Oracle Services', path: '/oracle-practices', icon: <Database className="w-5 h-5" /> },
+  { name: 'Veeva Services', path: '/veeva-practices', icon: <Activity className="w-5 h-5" /> },
+  { name: 'BPM Services', path: '/bpm-automation', icon: <Cpu className="w-5 h-5" /> },
+  { name: 'CRM Services', path: '/crm-services', icon: <Users className="w-5 h-5" /> },
+  { name: 'Custom Application Development', path: '/application-development', icon: <Code className="w-5 h-5" /> },
+  { name: 'Cybersecurity Services', path: '/cyber-security', icon: <Shield className="w-5 h-5" /> },
+  { name: 'Managed Services', path: '/managed-services', icon: <Settings className="w-5 h-5" /> },
+  { name: 'On Demand Services', path: '/on-demand-services', icon: <Cloud className="w-5 h-5" /> },
+  { name: 'Staff Augmentation', path: '/recruitment-rpo', icon: <Users className="w-5 h-5" /> },
   { name: 'QA & Testing', path: '/qa-testing', icon: <Shield className="w-5 h-5" /> },
-  { name: 'Managed Services', path: '/managed-on-demand', icon: <Settings className="w-5 h-5" /> },
-  { name: 'Arch Workshops', path: '/architectural-workshops', icon: <Building className="w-5 h-5" /> },
+  { name: 'Architectural Workshops', path: '/architectural-workshops', icon: <Building className="w-5 h-5" /> },
 ];
 
 const technologiesList = [
@@ -104,10 +105,14 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className={`relative flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={() => handleMouseEnter('technologies')}>
+          {/* <div className={`relative flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={() => handleMouseEnter('technologies')}>
             <Link to="/technologies" className={`px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors ${hoveredMenu === 'technologies' ? 'text-[#0B1F3A] bg-gray-100/50' : 'hover:text-[#C9A227]'}`}>
               Technologies <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${hoveredMenu === 'technologies' ? 'rotate-180' : ''}`} />
             </Link>
+          </div> */}
+
+          <div className={`flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={handleMouseLeave}>
+            <Link to="/design-lab" className="px-5 py-2.5 hover:text-[#C9A227] transition-colors">Design Lab</Link>
           </div>
 
           <div className={`flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={handleMouseLeave}>
@@ -205,7 +210,7 @@ const Navbar = () => {
               </div>
 
               {/* Technologies Accordion */}
-              <div className="flex flex-col border-b border-gray-100 pb-2">
+              {/* <div className="flex flex-col border-b border-gray-100 pb-2">
                 <div 
                   className="flex items-center justify-between py-2 cursor-pointer text-lg font-semibold text-[#0B1F3A]" 
                   onClick={() => setExpandedMobileMenu(expandedMobileMenu === 'technologies' ? null : 'technologies')}
@@ -231,8 +236,11 @@ const Navbar = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </div> */}
 
+              <div className="py-2 border-b border-gray-100">
+                <Link to="/design-lab" className="text-lg font-semibold text-[#0B1F3A] block w-full" onClick={() => setMobileMenuOpen(false)}>Design Lab</Link>
+              </div>
               <div className="py-2 border-b border-gray-100">
                 <Link to="/careers" className="text-lg font-semibold text-[#0B1F3A] block w-full" onClick={() => setMobileMenuOpen(false)}>Careers</Link>
               </div>
@@ -318,7 +326,7 @@ const Navbar = () => {
             </motion.div>
           )}
 
-          {hoveredMenu === 'technologies' && (
+          {/* hoveredMenu === 'technologies' && (
             <motion.div 
               variants={megaMenuVariants} initial="hidden" animate="visible" exit="exit"
               className="max-w-7xl mx-auto px-6 md:px-12 py-12 pointer-events-auto"
@@ -348,7 +356,7 @@ const Navbar = () => {
                 </div>
               </div>
             </motion.div>
-          )}
+          ) */}
         </AnimatePresence>
       </div>
     </nav>

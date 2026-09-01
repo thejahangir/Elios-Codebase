@@ -59,6 +59,7 @@ import NetworkInfrastructureServicePage from './pages/Services/NetworkInfrastruc
 import QaTestingServicePage from './pages/Services/QaTestingServicePage';
 import ManagedOnDemandServicePage from './pages/Services/ManagedOnDemandServicePage';
 import ArchitecturalWorkshopsServicePage from './pages/Services/ArchitecturalWorkshopsServicePage';
+import CrmServicesPage from './pages/Services/CrmServicesPage';
 import DataAnalyticsTechPage from './pages/Technologies/DataAnalyticsTechPage';
 import AiDataScienceTechPage from './pages/Technologies/AiDataScienceTechPage';
 import CloudIntegrationTechPage from './pages/Technologies/CloudIntegrationTechPage';
@@ -77,6 +78,7 @@ import CyberSecurityTechPage from './pages/Technologies/CyberSecurityTechPage';
 import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
+import DesignLabPage from './pages/DesignLabPage';
 
 const AboutPage = () => <div className="pt-24 px-8 min-h-screen">About Us Placeholder</div>;
 const NotFoundPage = () => <div className="pt-24 px-8 min-h-screen flex flex-col items-center justify-center"><h1>404 Not Found</h1></div>;
@@ -105,6 +107,9 @@ function App() {
           <Route path="network-infrastructure" element={<NetworkInfrastructureServicePage />} />
           <Route path="qa-testing" element={<QaTestingServicePage />} />
           <Route path="managed-on-demand" element={<ManagedOnDemandServicePage />} />
+          <Route path="managed-services" element={<ManagedOnDemandServicePage />} />
+          <Route path="on-demand-services" element={<ManagedOnDemandServicePage />} />
+          <Route path="crm-services" element={<CrmServicesPage />} />
           <Route path="architectural-workshops" element={<ArchitecturalWorkshopsServicePage />} />
           <Route path="data-analytics" element={<DataAnalyticsTechPage />} />
           <Route path="ai-data-science" element={<AiDataScienceTechPage />} />
@@ -124,6 +129,7 @@ function App() {
           <Route path="careers" element={<CareersPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="blog" element={<BlogPage />} />
+          <Route path="design-lab" element={<DesignLabPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

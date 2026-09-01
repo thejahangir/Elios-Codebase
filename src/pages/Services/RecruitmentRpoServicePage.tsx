@@ -65,6 +65,12 @@ const RecruitmentRpoServicePage = () => {
     }
   ];
 
+  const staffAugTypes = [
+    { title: "Contract", description: "Flexible, short-term or long-term contract professionals to help you meet project deadlines and handle workload spikes.", icon: <UserCheck className="w-8 h-8 text-blue-600" /> },
+    { title: "Contract to Hire", description: "Evaluate professionals on the job before making a full-time commitment, ensuring a perfect fit for your team.", icon: <Briefcase className="w-8 h-8 text-emerald-600" /> },
+    { title: "Full Time", description: "Direct placement of top-tier talent for permanent roles, backed by our extensive sourcing and screening process.", icon: <Users className="w-8 h-8 text-purple-600" /> }
+  ];
+
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
       {/* Hero Section */}
@@ -164,8 +170,39 @@ const RecruitmentRpoServicePage = () => {
         </div>
       </section>
 
-      {/* Industries & RPO vs BPO */}
+      {/* Staff Augmentation Types */}
       <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div {...fadeIn} className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Staff Augmentation Options</h2>
+            <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full" />
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {staffAugTypes.map((type, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 flex flex-col items-center text-center"
+              >
+                <div className="bg-blue-50 w-20 h-20 rounded-full flex items-center justify-center mb-6">
+                  {type.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{type.title}</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {type.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries & RPO vs BPO */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
           
           {/* Industries */}

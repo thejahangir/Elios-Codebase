@@ -3,15 +3,11 @@ import InnerPageHero from '../../components/InnerPageHero';
 import { 
   TrendingUp, 
   ShieldCheck, 
-  Award, 
   Globe2, 
   FileText, 
   Download, 
   Mail, 
-  Building2, 
-  ArrowUpRight, 
   CheckCircle2, 
-  PieChart, 
   BarChart3, 
   Cpu
 } from 'lucide-react';

@@ -15,19 +15,16 @@ import {
   CheckCircle2, 
   Layers, 
   ArrowRight, 
-  AlertTriangle, 
   RefreshCw, 
   Key, 
   Users, 
-  Sliders, 
   BarChart2, 
   ShieldAlert, 
   Award, 
   FileText,
   Clock,
   Compass,
-  Zap,
-  HardDrive
+  Zap
 } from 'lucide-react';
 
 const FadeIn = ({ children, delay = 0, className = "" }: any) => (
@@ -388,20 +385,8 @@ const corePrinciples = [
   }
 ];
 
-const standardsList = [
-  { code: "ISO/IEC 27001:2022", label: "Information Security Management Systems (ISMS)" },
-  { code: "ISO/IEC 27002:2022", label: "Information Security Controls & Practices" },
-  { code: "NIST CSF 2.0", label: "Identify, Protect, Detect, Respond, Recover, Govern" },
-  { code: "MITRE ATT&CK", label: "Adversary Tactics, Techniques & Real-world Procedures" },
-  { code: "CIS Controls & Benchmarks", label: "Prescriptive Hardening Baselines for OS, Cloud & DB" },
-  { code: "OWASP ASVS & Top 10", label: "Web, API & Mobile Application Security Standards" },
-  { code: "PTES & CVSS v3.1", label: "Penetration Testing Execution Standard & Severity Scoring" },
-  { code: "ISO 22301 & ISO 20000-1", label: "Business Continuity (BCMS) & IT Service Management (ITSMS)" }
-];
-
 const CyberSecurityTechPage = () => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'advisory' | 'grc' | 'secops' | 'platforms'>('all');
-  const [selectedService, setSelectedService] = useState<string | null>(null);
 
   const filteredServices = activeFilter === 'all' 
     ? serviceCatalogue 

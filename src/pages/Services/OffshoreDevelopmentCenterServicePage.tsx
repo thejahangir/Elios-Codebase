@@ -6,14 +6,10 @@ import {
   Building2, 
   Database, 
   Cpu, 
-  Server, 
-  Layers, 
   ArrowRight, 
   CheckCircle2, 
   Users, 
   ShieldCheck, 
-  Clock, 
-  GitBranch, 
   Activity, 
   Workflow, 
   MapPin, 
@@ -21,10 +17,9 @@ import {
   Zap, 
   Settings, 
   Code, 
-  FileText,
-  BarChart3,
-  HelpCircle,
-  Briefcase
+  FileText, 
+  BarChart3, 
+  Briefcase 
 } from 'lucide-react';
 
 const FadeIn = ({ children, delay = 0, className = "" }: any) => (

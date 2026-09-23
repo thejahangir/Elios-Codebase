@@ -7,28 +7,40 @@ const offices = [
     city: "Cary (NC), USA",
     address: "964 High House Rd #3023, Cary, NC 27513",
     phone: "+1 (555) 123-4567",
-    email: "usa@eliostechnologies.com",
+    emails: [
+      { label: "General Inquiries", address: "Info@eliostechinc.com" },
+      { label: "HR & Careers", address: "hr@eliostechinc.com" }
+    ],
     image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
     city: "Dubai, UAE",
     address: "Dubai Internet City, Office 405",
     phone: "+971 4 123 4567",
-    email: "dubai@eliostechnologies.com",
+    emails: [
+      { label: "General Inquiries", address: "Info@eliostechinc.com" },
+      { label: "HR & Careers", address: "hr@eliostechinc.com" }
+    ],
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
     city: "Hyderabad, IND",
     address: "Cyber Towers, Hitec City 500081",
     phone: "+91 40 1234 5678",
-    email: "hyderabad@eliostechnologies.com",
+    emails: [
+      { label: "General Inquiries", address: "Info@eliostechinc.com" },
+      { label: "HR & Careers", address: "hr@eliostechinc.com" }
+    ],
     image: "https://images.unsplash.com/photo-1570795876989-bcec725b8e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
     city: "Bangalore, IND",
     address: "First Floor, 272/4, 4th Cross, Nagavarapalya, CV Raman Nagar, Near Gopalan Mall, Bangalore-560093",
     phone: "+91 80 1234 5678",
-    email: "bangalore@eliostechnologies.com",
+    emails: [
+      { label: "General Inquiries", address: "Info@eliostechinc.com" },
+      { label: "HR & Careers", address: "hr@eliostechinc.com" }
+    ],
     image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   }
 ];
@@ -69,16 +81,21 @@ const ContactPage = () => {
               
               <div className="hidden lg:flex flex-col gap-6">
                 <div className="flex items-center gap-4 text-white">
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
                     <Mail className="w-5 h-5 text-[#C9A227]" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email Us Directly</p>
-                    <p className="font-bold">contact@eliostechnologies.com</p>
+                    <a href="mailto:Info@eliostechinc.com" className="font-bold text-white hover:text-[#C9A227] transition-colors block">
+                      Info@eliostechinc.com
+                    </a>
+                    <a href="mailto:hr@eliostechinc.com" className="text-sm text-gray-300 hover:text-[#C9A227] transition-colors block">
+                      hr@eliostechinc.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-white">
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shrink-0">
                     <Phone className="w-5 h-5 text-[#C9A227]" />
                   </div>
                   <div>
@@ -195,19 +212,24 @@ const ContactPage = () => {
                     {office.address}
                   </p>
 
-                  <div className="pt-6 border-t border-gray-100 space-y-4">
-                    <a href={`tel:${office.phone}`} className="flex items-center gap-4 text-sm font-medium text-[#0B1F3A] hover:text-[#C9A227] transition-colors group/link">
-                      <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover/link:bg-[#C9A227] group-hover/link:shadow-md transition-all">
+                  <div className="pt-6 border-t border-gray-100 space-y-3">
+                    <a href={`tel:${office.phone}`} className="flex items-center gap-3 text-sm font-medium text-[#0B1F3A] hover:text-[#C9A227] transition-colors group/link">
+                      <div className="w-9 h-9 rounded-full bg-gray-50 flex items-center justify-center group-hover/link:bg-[#C9A227] group-hover/link:shadow-md transition-all shrink-0">
                         <Phone className="w-4 h-4 text-gray-500 group-hover/link:text-white transition-colors" />
                       </div>
-                      {office.phone}
+                      <span>{office.phone}</span>
                     </a>
-                    <a href={`mailto:${office.email}`} className="flex items-center gap-4 text-sm font-medium text-[#0B1F3A] hover:text-[#C9A227] transition-colors group/link">
-                      <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover/link:bg-[#C9A227] group-hover/link:shadow-md transition-all">
-                        <Mail className="w-4 h-4 text-gray-500 group-hover/link:text-white transition-colors" />
-                      </div>
-                      {office.email}
-                    </a>
+                    {office.emails.map((em, eIdx) => (
+                      <a key={eIdx} href={`mailto:${em.address}`} className="flex items-center gap-3 text-sm font-medium text-[#0B1F3A] hover:text-[#C9A227] transition-colors group/link">
+                        <div className="w-9 h-9 rounded-full bg-gray-50 flex items-center justify-center group-hover/link:bg-[#C9A227] group-hover/link:shadow-md transition-all shrink-0">
+                          <Mail className="w-4 h-4 text-gray-500 group-hover/link:text-white transition-colors" />
+                        </div>
+                        <div className="flex flex-col">
+                          <span className="text-[11px] text-gray-400 leading-tight">{em.label}</span>
+                          <span className="text-gray-800 group-hover/link:text-[#C9A227] transition-colors">{em.address}</span>
+                        </div>
+                      </a>
+                    ))}
                   </div>
                 </div>
               </motion.div>

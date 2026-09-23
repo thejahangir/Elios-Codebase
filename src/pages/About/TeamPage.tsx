@@ -12,24 +12,13 @@ const LinkedInIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const XIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-  </svg>
-);
-
-const InstaIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-  </svg>
-);
-
 const teamMembers = [
   {
     id: "ravi-dharmala",
     name: "Ravi Dharmala",
     role: "Chief Executive Officer",
     image: raviImg,
+    email: "rdharmala@eliostechinc.com",
     linkedin: "https://www.linkedin.com/in/ravi-dharmala-8a9455a1/",
     bio: "Leading Elios Technologies with visionary strategic direction, driving enterprise growth, digital innovation, and global client partnerships.",
     fullBio: "As Chief Executive Officer, Ravi Dharmala steers the strategic vision, global expansion, and operational excellence of Elios Technologies. With deep leadership acumen across enterprise IT services, digital transformation, and executive consulting, Ravi empowers organizations to scale securely and innovate continuously in dynamic global markets.",
@@ -38,12 +27,13 @@ const teamMembers = [
   },
   {
     id: "viswa-k",
-    name: "Viswa K",
+    name: "Vishwanath K",
     role: "Director (Business Unit & Account Management)",
     image: viswaImg,
+    email: "vishwa.krishna@eliostechinc.com",
     linkedin: "https://www.linkedin.com/in/vishwak1/?isSelfProfile=false",
     bio: "Driving business unit strategy, key account growth, and strategic client relationships across global enterprise engagements.",
-    fullBio: "Viswa K leads Business Unit operations and strategic Account Management at Elios Technologies. Specializing in enterprise client success, delivery orchestration, and strategic partnership management, Viswa bridges business imperatives with high-impact technology solutions.",
+    fullBio: "Vishwanath K leads Business Unit operations and strategic Account Management at Elios Technologies. Specializing in enterprise client success, delivery orchestration, and strategic partnership management, Vishwanath bridges business imperatives with high-impact technology solutions.",
     expertise: ["Business Unit Leadership", "Account Management", "Enterprise Client Success", "Strategic Partnerships", "Revenue Growth"],
     quote: "Client success is the cornerstone of sustainable enterprise relationships."
   }
@@ -106,9 +96,17 @@ const TeamPage = () => {
                     <motion.h3 layoutId={`name-${member.id}`} className="text-3xl font-bold text-[#0B1F3A] mb-1 group-hover:text-[#C9A227] transition-colors">
                       {member.name}
                     </motion.h3>
-                    <motion.p layoutId={`role-${member.id}`} className="text-gray-500 font-medium mb-4 text-sm uppercase tracking-wider">
+                    <motion.p layoutId={`role-${member.id}`} className="text-gray-500 font-medium mb-2 text-sm uppercase tracking-wider">
                       {member.role}
                     </motion.p>
+                    <a 
+                      href={`mailto:${member.email}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-2 text-xs font-semibold text-[#0B1F3A] hover:text-[#C9A227] transition-colors mb-4"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-[#C9A227]" />
+                      <span>{member.email}</span>
+                    </a>
                     <motion.p layoutId={`bio-${member.id}`} className="text-gray-600 leading-relaxed line-clamp-3">
                       {member.bio}
                     </motion.p>
@@ -116,7 +114,7 @@ const TeamPage = () => {
                   
                   <div className="mt-6 flex items-center justify-between border-t border-gray-100 pt-6">
                     <div className="flex gap-3">
-                      {member.linkedin ? (
+                      {member.linkedin && (
                         <a 
                           href={member.linkedin}
                           target="_blank"
@@ -127,14 +125,15 @@ const TeamPage = () => {
                         >
                           <LinkedInIcon className="w-4 h-4" />
                         </a>
-                      ) : (
-                        <div className="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center group-hover:bg-[#0B1F3A] group-hover:text-white transition-colors">
-                          <LinkedInIcon className="w-4 h-4" />
-                        </div>
                       )}
-                      <div className="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center group-hover:bg-[#0B1F3A] group-hover:text-white transition-colors">
-                        <XIcon className="w-4 h-4" />
-                      </div>
+                      <a 
+                        href={`mailto:${member.email}`}
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors"
+                        title={`Email ${member.name}`}
+                      >
+                        <Mail className="w-4 h-4" />
+                      </a>
                     </div>
                     
                     <div className="flex items-center gap-2 text-[#C9A227] text-sm font-bold uppercase tracking-wider group-hover:text-[#0B1F3A] transition-colors">
@@ -188,12 +187,19 @@ const TeamPage = () => {
                   <motion.h3 layoutId={`name-${selectedMember.id}`} className="text-4xl md:text-5xl font-bold text-[#0B1F3A] mb-2">
                     {selectedMember.name}
                   </motion.h3>
-                  <motion.p layoutId={`role-${selectedMember.id}`} className="text-[#C9A227] font-bold text-lg uppercase tracking-wider mb-8">
+                  <motion.p layoutId={`role-${selectedMember.id}`} className="text-[#C9A227] font-bold text-lg uppercase tracking-wider mb-3">
                     {selectedMember.role}
                   </motion.p>
+                  <a 
+                    href={`mailto:${selectedMember.email}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-[#C9A227] transition-colors mb-6 bg-gray-50 px-4 py-2 rounded-full border border-gray-200/80"
+                  >
+                    <Mail className="w-4 h-4 text-[#C9A227]" />
+                    <span>{selectedMember.email}</span>
+                  </a>
                   
                   <div className="flex gap-4 justify-center md:justify-start">
-                    {selectedMember.linkedin ? (
+                    {selectedMember.linkedin && (
                       <a 
                         href={selectedMember.linkedin} 
                         target="_blank" 
@@ -203,21 +209,11 @@ const TeamPage = () => {
                       >
                         <LinkedInIcon className="w-4 h-4" />
                       </a>
-                    ) : (
-                      <button className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer">
-                        <LinkedInIcon className="w-4 h-4" />
-                      </button>
                     )}
-                    <button className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer">
-                      <XIcon className="w-4 h-4" />
-                    </button>
-                    <button className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer">
-                      <InstaIcon className="w-4 h-4" />
-                    </button>
                     <a 
-                      href="mailto:contact@eliostechnologies.com"
+                      href={`mailto:${selectedMember.email}`}
                       className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer"
-                      title="Contact"
+                      title={`Email ${selectedMember.name}`}
                     >
                       <Mail className="w-4 h-4" />
                     </a>

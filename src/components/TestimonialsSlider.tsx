@@ -7,8 +7,8 @@ const testimonials = [
     id: 1,
     content: "Elios didn't just rebuild our infrastructure; they reimagined our entire digital approach. The ROI was evident within the first quarter.",
     author: "Priya Sharma",
-    role: "CTO, Infosys",
-    image: "https://i.pravatar.cc/150?img=5",
+    role: "Sr. Delivery Manager, Technology Services",
+    initials: "PS",
     rating: 5,
     company: "Infosys"
   },
@@ -16,8 +16,8 @@ const testimonials = [
     id: 2,
     content: "The cloud migration flawlessly orchestrated by Elios helped us achieve 99.99% uptime and reduced our operational costs by 40%.",
     author: "Rahul Desai",
-    role: "VP Eng, Wipro",
-    image: "https://i.pravatar.cc/150?img=11",
+    role: "Sr. Technical Architect, Cloud Systems",
+    initials: "RD",
     rating: 5,
     company: "Wipro"
   },
@@ -25,8 +25,8 @@ const testimonials = [
     id: 3,
     content: "We needed a team that could scale our enterprise applications globally. Elios delivered beyond expectations, bringing architectural brilliance.",
     author: "Ananya Patel",
-    role: "Dir. Product, TCS",
-    image: "https://i.pravatar.cc/150?img=9",
+    role: "Sr. Engineering Manager, Digital Solutions",
+    initials: "AP",
     rating: 5,
     company: "TCS"
   },
@@ -34,12 +34,28 @@ const testimonials = [
     id: 4,
     content: "Their team's technical depth is matched only by their strategic insight. A true partner in our continuous innovation journey.",
     author: "Vikram Singh",
-    role: "CEO, Tech Mahindra",
-    image: "https://i.pravatar.cc/150?img=14",
+    role: "Sr. Solutions Architect & Lead Consultant",
+    initials: "VS",
     rating: 5,
     company: "Tech Mahindra"
   }
 ];
+
+const AvatarBadge = ({ initials, isActive, size = "md" }: { initials: string; isActive?: boolean; size?: "sm" | "md" }) => {
+  const sizeClasses = size === "sm" ? "w-10 h-10 text-xs" : "w-14 h-14 text-sm";
+  return (
+    <div
+      className={`relative ${sizeClasses} rounded-2xl flex items-center justify-center font-bold tracking-wider transition-all duration-500 select-none shadow-sm ${
+        isActive
+          ? "bg-gradient-to-br from-[#0B1F3A] via-[#163359] to-[#0B1F3A] text-[#C9A227] border-2 border-[#C9A227] shadow-[0_0_20px_rgba(201,162,39,0.3)] scale-100"
+          : "bg-white/5 text-white/60 border border-white/10 scale-95 group-hover:border-[#C9A227]/40 group-hover:text-white"
+      }`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#C9A227]/10 to-transparent rounded-2xl opacity-60 pointer-events-none" />
+      <span className="relative z-10">{initials}</span>
+    </div>
+  );
+};
 
 const TestimonialsSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -95,15 +111,11 @@ const TestimonialsSlider = () => {
                     "{activeTestimonial.content}"
                   </h3>
                   <div className="flex items-center gap-3 md:hidden">
-                     <img 
-                       src={activeTestimonial.image} 
-                       alt={activeTestimonial.author}
-                       className="w-10 h-10 rounded-full object-cover border border-white/20"
-                     />
-                     <div>
-                       <p className="text-white font-medium text-sm">{activeTestimonial.author}</p>
-                       <p className="text-[#C9A227] text-xs">{activeTestimonial.role}</p>
-                     </div>
+                    <AvatarBadge initials={activeTestimonial.initials} isActive size="sm" />
+                    <div>
+                      <p className="text-white font-medium text-sm">{activeTestimonial.author}</p>
+                      <p className="text-[#C9A227] text-xs">{activeTestimonial.role}</p>
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -138,13 +150,7 @@ const TestimonialsSlider = () => {
                   
                   <div className="relative z-10 flex items-center gap-4 w-full">
                     <div className="relative">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.author}
-                        className={`w-14 h-14 rounded-full object-cover transition-all duration-300 ${
-                          isActive ? 'border-2 border-[#C9A227] scale-100' : 'border border-transparent scale-90 grayscale group-hover:grayscale-0'
-                        }`}
-                      />
+                      <AvatarBadge initials={testimonial.initials} isActive={isActive} size="md" />
                       {isActive && (
                         <motion.div 
                           layoutId="activeDot"

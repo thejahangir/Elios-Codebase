@@ -10,6 +10,13 @@ import heroBg1Img from '../assets/hero_bg_1.png';
 import heroBg2Img from '../assets/hero_bg_2.png';
 import heroBg3Img from '../assets/hero_bg_3.png';
 import heroBg4Img from '../assets/hero_bg_4.png';
+import logo1 from '../assets/logo-1.png';
+import logo2 from '../assets/logo-2.png';
+import logo3 from '../assets/logo-3.png';
+import logo4 from '../assets/logo-4.png';
+import logo5 from '../assets/logo-5.png';
+import logo6 from '../assets/logo-6.png';
+import logo7 from '../assets/logo-7.png';
 
 const customEasing = [0.16, 1, 0.3, 1] as any;
 
@@ -28,26 +35,43 @@ const FadeIn = ({ children, delay = 0, className = "" }: any) => (
 const HomePage = () => {
   const heroRef = useRef(null);
 
-  const partners = {
-    technology: [
-      { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" }, 
-      { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" }, 
-      { name: "Google Cloud", logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_logo.svg" },
-      { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" }
-    ],
-    business: [
-      { name: "Infosys", logo: "https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" },
-      { name: "TCS", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" },
-      { name: "Accenture", logo: "https://upload.wikimedia.org/wikipedia/commons/c/cd/Accenture.svg" },
-      { name: "Deloitte", logo: "https://upload.wikimedia.org/wikipedia/commons/5/56/Deloitte.svg" }
-    ],
-    clients: [
-      { name: "Meta", logo: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg" }, 
-      { name: "Intel", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg" },
-      { name: "Sony", logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg" }, 
-      { name: "Oracle", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" }
-    ]
-  };
+  const implementationPartners = [
+    { 
+      name: "STL Digital", 
+      logo: logo1,
+      category: "Digital Engineering"
+    },
+    { 
+      name: "EY", 
+      logo: logo2,
+      category: "Strategy & Transformation"
+    },
+    { 
+      name: "Infosys", 
+      logo: logo3,
+      category: "Global SI & Consulting"
+    },
+    { 
+      name: "HCL", 
+      logo: logo4,
+      category: "Enterprise Tech & Cloud"
+    },
+    { 
+      name: "Hitachi", 
+      logo: logo5,
+      category: "Industrial & IT Solutions"
+    },
+    { 
+      name: "Incture Technologies", 
+      logo: logo6,
+      category: "SAP & Digital Solutions"
+    },
+    { 
+      name: "Wipro", 
+      logo: logo7,
+      category: "Technology Consulting"
+    }
+  ];
   
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -358,94 +382,47 @@ const HomePage = () => {
 
           <div className="flex flex-col gap-12">
             
-            {/* Category 1: Technology */}
+            {/* Implementation Partners */}
             <FadeIn delay={0.1}>
-              <div className="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 rounded-lg p-10 md:p-16">
+              <div className="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 rounded-2xl p-8 md:p-14">
                 <div className="text-center mb-10">
-                  <h3 className="text-3xl font-bold text-[#1C2539] mb-4">Technology Partners</h3>
+                  <span className="text-[#C9A227] font-semibold text-xs tracking-widest uppercase mb-2 block">
+                    Strategic Alliances
+                  </span>
+                  <h3 className="text-3xl md:text-4xl font-bold text-[#1C2539] mb-4">Implementation Partners </h3>
                   <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto font-light">
-                    Facilisi curabitur volutpat nunc, suspendisse tincidunt. Lorem pulvinar purus
-                    libero accumsan, sagittis ullamcorper velit mauris sit.
+                    Collaborating with premier system integrators, global technology consultants, and digital engineering leaders to deliver end-to-end transformation.
                   </p>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {partners.technology.map((partner, i) => (
-                    <div key={`tech-${i}`} className="group relative bg-white border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)] rounded-lg flex items-center justify-center p-6 h-32 hover:border-[#C9A227]/50 hover:shadow-[0_15px_35px_rgba(201,162,39,0.15)] hover:-translate-y-1 overflow-hidden transition-all duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name} 
-                        className="relative z-10 max-w-[120px] max-h-[40px] object-contain transition-all duration-500 group-hover:scale-110" 
-                        onError={(e) => { 
-                          e.currentTarget.style.display = 'none'; 
-                          const next = e.currentTarget.nextElementSibling as HTMLElement;
-                          if (next) next.style.display = 'block'; 
-                        }} 
-                      />
-                      <span className="hidden font-bold text-xl text-gray-800 relative z-10">{partner.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-5">
+                  {implementationPartners.map((partner, i) => (
+                    <div 
+                      key={`impl-${i}`} 
+                      className="group relative bg-white border border-gray-200/90 shadow-[0_4px_16px_rgba(0,0,0,0.04)] rounded-2xl flex flex-col items-center justify-center p-5 h-36 hover:border-[#C9A227] hover:shadow-[0_20px_40px_rgba(11,31,58,0.12),0_0_25px_rgba(201,162,39,0.2)] hover:-translate-y-2 overflow-hidden transition-all duration-500 cursor-pointer"
+                    >
+                      {/* Top Animated Accent Border */}
+                      <div className="absolute top-0 inset-x-0 h-[3px] bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      {/* Ambient Gradient Glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/10 via-[#0B1F3A]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      
+                      {/* Shimmer Light Reflection Sweep */}
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none z-20" />
+                      
+                      {/* Logo Image */}
+                      <div className="relative z-10 w-full h-14 flex items-center justify-center px-2">
+                        <img 
+                          src={partner.logo} 
+                          alt={partner.name} 
+                          className="max-w-[120px] max-h-[46px] w-auto h-auto object-contain filter grayscale contrast-110 opacity-75 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-out" 
+                        />
+                      </div>
 
-            {/* Category 2: Business */}
-            <FadeIn delay={0.2}>
-              <div className="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 rounded-lg p-10 md:p-16">
-                <div className="text-center mb-10">
-                  <h3 className="text-3xl font-bold text-[#1C2539] mb-4">Business Partners</h3>
-                  <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto font-light">
-                    Collaborating with leading business integrators and consulting firms to deliver end-to-end transformation.
-                  </p>
-                </div>
-                
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {partners.business.map((partner, i) => (
-                    <div key={`biz-${i}`} className="group relative bg-white border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)] rounded-lg flex items-center justify-center p-6 h-32 hover:border-[#C9A227]/50 hover:shadow-[0_15px_35px_rgba(201,162,39,0.15)] hover:-translate-y-1 overflow-hidden transition-all duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <img 
-                        src={partner.logo} 
-                        alt={partner.name} 
-                        className="relative z-10 max-w-[120px] max-h-[40px] object-contain transition-all duration-500 group-hover:scale-110" 
-                        onError={(e) => { 
-                          e.currentTarget.style.display = 'none'; 
-                          const next = e.currentTarget.nextElementSibling as HTMLElement;
-                          if (next) next.style.display = 'block'; 
-                        }} 
-                      />
-                      <span className="hidden font-bold text-xl text-gray-800 relative z-10">{partner.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Category 3: Clients */}
-            <FadeIn delay={0.3}>
-              <div className="bg-white shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 rounded-lg p-10 md:p-16">
-                <div className="text-center mb-10">
-                  <h3 className="text-3xl font-bold text-[#1C2539] mb-4">Clients we are proud of</h3>
-                  <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto font-light">
-                    Trusted by industry leaders and forward-thinking enterprises globally to drive innovation.
-                  </p>
-                </div>
-                
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {partners.clients.map((client, i) => (
-                    <div key={`client-${i}`} className="group relative bg-white border border-gray-200 shadow-[0_4px_16px_rgba(0,0,0,0.06)] rounded-lg flex items-center justify-center p-6 h-32 hover:border-[#C9A227]/50 hover:shadow-[0_15px_35px_rgba(201,162,39,0.15)] hover:-translate-y-1 overflow-hidden transition-all duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#C9A227]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <img 
-                        src={client.logo} 
-                        alt={client.name} 
-                        className="relative z-10 max-w-[120px] max-h-[40px] object-contain transition-all duration-500 group-hover:scale-110" 
-                        onError={(e) => { 
-                          e.currentTarget.style.display = 'none'; 
-                          const next = e.currentTarget.nextElementSibling as HTMLElement;
-                          if (next) next.style.display = 'block'; 
-                        }} 
-                      />
-                      <span className="hidden font-bold text-xl text-gray-800 relative z-10">{client.name}</span>
+                      {/* Partner Name Indicator */}
+                      <span className="text-[11px] font-semibold tracking-wider text-gray-400 group-hover:text-[#0B1F3A] transition-colors duration-300 mt-1 truncate max-w-full relative z-10 opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all">
+                        {partner.name}
+                      </span>
                     </div>
                   ))}
                 </div>

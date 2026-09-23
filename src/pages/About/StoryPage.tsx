@@ -15,29 +15,29 @@ const FadeIn = ({ children, delay = 0, className = "" }: any) => (
 
 const timelineEvents = [
   {
-    year: "2010",
-    title: "The Beginning",
-    description: "Founded in a small garage with a vision to revolutionize enterprise technology consulting. We started with just 3 dedicated engineers."
+    year: "June 2018",
+    title: "Official Inception",
+    description: "Elios was officially incorporated on 19th June 2018 with a clear mission to engineer robust enterprise architectures, offshore development excellence, and transformative IT solutions."
   },
   {
-    year: "2014",
-    title: "Global Expansion",
-    description: "Opened our first international office in London, expanding our reach and serving our first Fortune 500 client."
-  },
-  {
-    year: "2018",
-    title: "Cloud Native Shift",
-    description: "Embraced the cloud revolution, partnering with AWS, Azure, and GCP to deliver scalable infrastructure solutions."
+    year: "2020",
+    title: "Scale & Digital Resilience",
+    description: "Accelerated enterprise cloud transformation and scaled our Offshore Development Center (ODC) delivery models, ensuring uninterrupted business continuity and rapid scale for clients."
   },
   {
     year: "2022",
-    title: "AI Integration",
-    description: "Launched our dedicated AI & Data Science division, integrating cutting-edge machine learning into our core offerings."
+    title: "Strategic Alliances & Expansion",
+    description: "Expanded strategic implementation partnerships across Enterprise Cloud, SAP Modernization, and Digital Systems, growing our global client footprint."
   },
   {
-    year: "2026",
-    title: "The Future",
-    description: "Continuing our journey of excellence, with over 1000+ experts globally and continuing to push the boundaries of innovation."
+    year: "2024",
+    title: "AI, Data & Cyber Resilience",
+    description: "Launched dedicated practices in Enterprise AI, Intelligent Automation, and Cybersecurity Governance (ISO/NIST aligned) to power next-generation digital operations."
+  },
+  {
+    year: "2026 & Beyond",
+    title: "Global Enterprise Partner",
+    description: "Continuing our journey of engineering excellence with 1000+ specialists worldwide, delivering sustained value, innovation, and technological leadership."
   }
 ];
 
@@ -60,13 +60,13 @@ const StoryPage = () => {
             <div className="w-24 h-1 bg-[#C9A227] mb-8"></div>
             <div className="prose prose-lg text-gray-600 max-w-none">
               <p className="mb-6">
-                Our story began with a simple belief: technology should empower businesses, not constrain them. Over a decade ago, we recognized a gap between what technology could do and how businesses were actually using it. 
+                Our story officially began on <strong>19th June 2018</strong> with a simple belief: technology should empower businesses, not constrain them. We recognized a growing gap between what modern technology could achieve and how enterprises were able to implement it with agility and precision.
               </p>
               <p className="mb-6">
-                We set out to bridge that gap. What started as a small team of passionate technologists has grown into a global powerhouse of innovation. We've weathered technological shifts, economic changes, and global challenges by staying true to our core mission: delivering excellence.
+                We set out to bridge that gap. What started with dedicated technologists and architects has rapidly evolved into a trusted global partner. We've navigated technological shifts, multi-cloud migrations, and AI acceleration by staying anchored to our founding principles: technical depth, integrity, and measurable business value.
               </p>
               <p>
-                Today, we are proud to be the trusted technology partner for hundreds of organizations worldwide, helping them navigate the complexities of digital transformation and achieve unprecedented growth.
+                Today, Elios is proud to be the trusted technology and implementation partner for forward-thinking organizations worldwide, helping them navigate complex digital transformations and achieve sustainable growth.
               </p>
             </div>
           </FadeIn>

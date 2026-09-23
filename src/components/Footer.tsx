@@ -57,8 +57,8 @@ const Footer = () => {
             
             <div className="space-y-4 mb-8 text-sm">
               <div className="flex items-center gap-3 text-gray-400">
-                <MapPin className="w-5 h-5 text-[#C9A227]" />
-                <span>Wilson Garden, Bangalore, India - 560030</span>
+                <MapPin className="w-5 h-5 text-[#C9A227] flex-shrink-0" />
+                <span>CV Raman Nagar, Bangalore, India - 560093</span>
               </div>
               <div className="flex items-center gap-3 text-gray-400">
                 <Phone className="w-5 h-5 text-[#C9A227]" />
@@ -90,6 +90,7 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-base mb-6 text-white tracking-wide">Services</h4>
             <ul className="space-y-3 text-sm text-gray-400">
+              <li><Link to="/offshore-development-center" className="hover:text-[#C9A227] transition-colors">Offshore Development Center</Link></li>
               <li><Link to="/sap-erp" className="hover:text-[#C9A227] transition-colors">SAP ERP Services</Link></li>
               <li><Link to="/migration" className="hover:text-[#C9A227] transition-colors">Cloud Migration</Link></li>
               <li><Link to="/application-development" className="hover:text-[#C9A227] transition-colors">App Development</Link></li>

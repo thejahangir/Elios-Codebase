@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Database, Cloud, Code, Activity, Users, Shield, Settings, Building, Cpu, ArrowRight, LineChart, BrainCircuit, Cable, Server, Radio, Zap, LayoutTemplate, TrendingUp } from 'lucide-react';
+import { Menu, X, ChevronDown, Database, Cloud, Code, Activity, Users, Shield, Settings, Building, Cpu, ArrowRight, LineChart, BrainCircuit, Cable, Server, Radio, Zap, LayoutTemplate, TrendingUp, Building2 } from 'lucide-react';
 import LogoEliosLight from '../assets/elios-logo-1.png';
 import LogoEliosDark from '../assets/elios-logo-2.png';
 
 const servicesList = [
   { name: 'SAP Service', path: '/sap-erp', icon: <Database className="w-5 h-5" /> },
   { name: 'Oracle Services', path: '/oracle-practices', icon: <Database className="w-5 h-5" /> },
+  { name: 'Offshore Development Center', path: '/offshore-development-center', icon: <Building2 className="w-5 h-5" /> },
   { name: 'Veeva Services', path: '/veeva-practices', icon: <Activity className="w-5 h-5" /> },
   { name: 'BPM Services', path: '/bpm-automation', icon: <Cpu className="w-5 h-5" /> },
   { name: 'CRM Services', path: '/crm-services', icon: <Users className="w-5 h-5" /> },

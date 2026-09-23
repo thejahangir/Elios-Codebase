@@ -61,6 +61,7 @@ import QaTestingServicePage from './pages/Services/QaTestingServicePage';
 import ManagedOnDemandServicePage from './pages/Services/ManagedOnDemandServicePage';
 import ArchitecturalWorkshopsServicePage from './pages/Services/ArchitecturalWorkshopsServicePage';
 import CrmServicesPage from './pages/Services/CrmServicesPage';
+import OffshoreDevelopmentCenterServicePage from './pages/Services/OffshoreDevelopmentCenterServicePage';
 import DataAnalyticsTechPage from './pages/Technologies/DataAnalyticsTechPage';
 import AiDataScienceTechPage from './pages/Technologies/AiDataScienceTechPage';
 import CloudIntegrationTechPage from './pages/Technologies/CloudIntegrationTechPage';
@@ -114,6 +115,8 @@ function App() {
           <Route path="on-demand-services" element={<ManagedOnDemandServicePage />} />
           <Route path="crm-services" element={<CrmServicesPage />} />
           <Route path="architectural-workshops" element={<ArchitecturalWorkshopsServicePage />} />
+          <Route path="offshore-development-center" element={<OffshoreDevelopmentCenterServicePage />} />
+          <Route path="odc" element={<Navigate to="/offshore-development-center" replace />} />
           <Route path="data-analytics" element={<DataAnalyticsTechPage />} />
           <Route path="ai-data-science" element={<AiDataScienceTechPage />} />
           <Route path="cloud-integration" element={<CloudIntegrationTechPage />} />

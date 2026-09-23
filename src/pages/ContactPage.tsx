@@ -4,8 +4,8 @@ import { MapPin, Phone, Mail, Send, Globe } from 'lucide-react';
 
 const offices = [
   {
-    city: "Silicon Valley, USA",
-    address: "123 Innovation Drive, CA 94025",
+    city: "Cary (NC), USA",
+    address: "964 High House Rd #3023, Cary, NC 27513",
     phone: "+1 (555) 123-4567",
     email: "usa@eliostechnologies.com",
     image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -26,7 +26,7 @@ const offices = [
   },
   {
     city: "Bangalore, IND",
-    address: "Wilson Garden, Karnataka 560030",
+    address: "First Floor, 272/4, 4th Cross, Nagavarapalya, CV Raman Nagar, Near Gopalan Mall, Bangalore-560093",
     phone: "+91 80 1234 5678",
     email: "bangalore@eliostechnologies.com",
     image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"

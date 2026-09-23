@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Database, Cloud, Code, Activity, Users, Shield, Settings, Building, Cpu, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Database, Cloud, Code, Activity, Users, Shield, Settings, Building, Cpu, ArrowRight, LineChart, BrainCircuit, Cable, Server, Radio, Zap, LayoutTemplate, TrendingUp } from 'lucide-react';
 import LogoEliosLight from '../assets/elios-logo-1.png';
 import LogoEliosDark from '../assets/elios-logo-2.png';
 
@@ -20,22 +20,22 @@ const servicesList = [
   { name: 'Architectural Workshops', path: '/architectural-workshops', icon: <Building className="w-5 h-5" /> },
 ];
 
-// const technologiesList = [
-//   { name: 'Data & Analytics', path: '/data-analytics', icon: <LineChart className="w-5 h-5" /> },
-//   { name: 'AI & Data Science', path: '/ai-data-science', icon: <BrainCircuit className="w-5 h-5" /> },
-//   { name: 'Cloud & Integration', path: '/cloud-integration', icon: <Cable className="w-5 h-5" /> },
-//   { name: 'IBM OMS', path: '/ibm-oms', icon: <Server className="w-5 h-5" /> },
-//   { name: 'BPM & Automation', path: '/bpm-automation', icon: <Cpu className="w-5 h-5" /> },
-//   { name: 'API Edge & IoT', path: '/api-edge-iot', icon: <Radio className="w-5 h-5" /> },
-//   { name: 'Digital Transform', path: '/digital-transformation', icon: <Zap className="w-5 h-5" /> },
-//   { name: 'ERP', path: '/erp', icon: <Database className="w-5 h-5" /> },
-//   { name: 'Digital Experience', path: '/digital-experience', icon: <LayoutTemplate className="w-5 h-5" /> },
-//   { name: 'EAM & IOT', path: '/eam-iot', icon: <Radio className="w-5 h-5" /> },
-//   { name: 'Oracle Practices', path: '/oracle-practices', icon: <Database className="w-5 h-5" /> },
-//   { name: 'Pega Practices', path: '/pega-practices', icon: <Settings className="w-5 h-5" /> },
-//   { name: 'Veeva Practices', path: '/veeva-practices', icon: <Activity className="w-5 h-5" /> },
-//   { name: 'Cyber Security Practices', path: '/cyber-security', icon: <Shield className="w-5 h-5" /> },
-// ];
+const technologiesList = [
+  { name: 'Data & Analytics', path: '/data-analytics', icon: <LineChart className="w-5 h-5" /> },
+  { name: 'AI & Data Science', path: '/ai-data-science', icon: <BrainCircuit className="w-5 h-5" /> },
+  { name: 'Cloud & Integration', path: '/cloud-integration', icon: <Cable className="w-5 h-5" /> },
+  { name: 'IBM OMS', path: '/ibm-oms', icon: <Server className="w-5 h-5" /> },
+  { name: 'BPM & Automation', path: '/bpm-automation', icon: <Cpu className="w-5 h-5" /> },
+  { name: 'API Edge & IoT', path: '/api-edge-iot', icon: <Radio className="w-5 h-5" /> },
+  { name: 'Digital Transform', path: '/digital-transformation', icon: <Zap className="w-5 h-5" /> },
+  { name: 'ERP', path: '/erp', icon: <Database className="w-5 h-5" /> },
+  { name: 'Digital Experience', path: '/digital-experience', icon: <LayoutTemplate className="w-5 h-5" /> },
+  { name: 'EAM & IOT', path: '/eam-iot', icon: <Radio className="w-5 h-5" /> },
+  { name: 'Oracle Practices', path: '/oracle-practices', icon: <Database className="w-5 h-5" /> },
+  { name: 'Pega Practices', path: '/pega-practices', icon: <Settings className="w-5 h-5" /> },
+  { name: 'Veeva Practices', path: '/veeva-practices', icon: <Activity className="w-5 h-5" /> },
+  { name: 'Cyber Security Practices', path: '/cyber-security', icon: <Shield className="w-5 h-5" /> },
+];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -105,11 +105,11 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* <div className={`relative flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={() => handleMouseEnter('technologies')}>
+          <div className={`relative flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={() => handleMouseEnter('technologies')}>
             <Link to="/technologies" className={`px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors ${hoveredMenu === 'technologies' ? 'text-[#0B1F3A] bg-gray-100/50' : 'hover:text-[#C9A227]'}`}>
               Technologies <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${hoveredMenu === 'technologies' ? 'rotate-180' : ''}`} />
             </Link>
-          </div> */}
+          </div>
 
           <div className={`flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={handleMouseLeave}>
             <Link to="/design-lab" className="px-5 py-2.5 hover:text-[#C9A227] transition-colors">Design Lab</Link>
@@ -175,6 +175,7 @@ const Navbar = () => {
                       <Link to="/about/mission-vision" className="text-gray-600 font-medium" onClick={() => setMobileMenuOpen(false)}>Our Mission & Vision</Link>
                       <Link to="/about/team" className="text-gray-600 font-medium" onClick={() => setMobileMenuOpen(false)}>Our Team</Link>
                       <Link to="/about/story" className="text-gray-600 font-medium" onClick={() => setMobileMenuOpen(false)}>Our Story</Link>
+                      <Link to="/about/investors" className="text-gray-600 font-medium" onClick={() => setMobileMenuOpen(false)}>Investors</Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -210,7 +211,7 @@ const Navbar = () => {
               </div>
 
               {/* Technologies Accordion */}
-              {/* <div className="flex flex-col border-b border-gray-100 pb-2">
+              <div className="flex flex-col border-b border-gray-100 pb-2">
                 <div 
                   className="flex items-center justify-between py-2 cursor-pointer text-lg font-semibold text-[#0B1F3A]" 
                   onClick={() => setExpandedMobileMenu(expandedMobileMenu === 'technologies' ? null : 'technologies')}
@@ -236,7 +237,7 @@ const Navbar = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div> */}
+              </div>
 
               <div className="py-2 border-b border-gray-100">
                 <Link to="/design-lab" className="text-lg font-semibold text-[#0B1F3A] block w-full" onClick={() => setMobileMenuOpen(false)}>Design Lab</Link>
@@ -264,29 +265,38 @@ const Navbar = () => {
               variants={megaMenuVariants} initial="hidden" animate="visible" exit="exit"
               className="max-w-7xl mx-auto px-6 md:px-12 py-12 pointer-events-auto"
             >
-              <div className="grid grid-cols-12 gap-12">
-                <div className="col-span-4 bg-[#F7F7F5] p-10 rounded-3xl">
-                  <h3 className="text-3xl font-bold text-[#0B1F3A] mb-4">Who We Are</h3>
-                  <p className="text-gray-500 mb-8 leading-relaxed">Elios Technologies is a global technology consulting firm helping enterprises transform the way they operate.</p>
-                  <Link to="/about/story" onClick={() => setHoveredMenu(null)} className="inline-flex items-center gap-2 font-semibold text-[#0B1F3A] hover:text-[#C9A227] transition-colors">
+              <div className="grid grid-cols-12 gap-10">
+                <div className="col-span-3 bg-[#F7F7F5] p-8 rounded-3xl flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#0B1F3A] mb-3">Who We Are</h3>
+                    <p className="text-gray-500 mb-6 text-sm leading-relaxed">Elios Technologies is a global technology consulting firm helping enterprises transform the way they operate.</p>
+                  </div>
+                  <Link to="/about/story" onClick={() => setHoveredMenu(null)} className="inline-flex items-center gap-2 font-semibold text-sm text-[#0B1F3A] hover:text-[#C9A227] transition-colors">
                     Read Our Story <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
-                <div className="col-span-8 flex flex-col justify-center">
-                  <div className="grid grid-cols-2 gap-8">
+                <div className="col-span-9 flex flex-col justify-center">
+                  <div className="grid grid-cols-3 gap-6">
                     <Link to="/about/mission-vision" onClick={() => setHoveredMenu(null)} className="group p-6 rounded-2xl hover:bg-gray-50 transition-colors">
-                      <div className="w-12 h-12 bg-[#C9A227]/10 text-[#C9A227] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-[#C9A227]/10 text-[#C9A227] rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                         <Activity className="w-6 h-6" />
                       </div>
-                      <h4 className="text-xl font-bold text-[#0B1F3A] mb-2">Our Mission & Vision</h4>
-                      <p className="text-gray-500 text-sm leading-relaxed">Discover the core values and objectives that drive our technology innovations.</p>
+                      <h4 className="text-lg font-bold text-[#0B1F3A] mb-2">Mission & Vision</h4>
+                      <p className="text-gray-500 text-xs leading-relaxed">Discover the core values and objectives that drive our technology innovations.</p>
                     </Link>
                     <Link to="/about/team" onClick={() => setHoveredMenu(null)} className="group p-6 rounded-2xl hover:bg-gray-50 transition-colors">
-                      <div className="w-12 h-12 bg-[#0B1F3A]/10 text-[#0B1F3A] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                      <div className="w-12 h-12 bg-[#0B1F3A]/10 text-[#0B1F3A] rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
                         <Users className="w-6 h-6" />
                       </div>
-                      <h4 className="text-xl font-bold text-[#0B1F3A] mb-2">Our Team</h4>
-                      <p className="text-gray-500 text-sm leading-relaxed">Meet the engineering experts and technology leaders behind Elios.</p>
+                      <h4 className="text-lg font-bold text-[#0B1F3A] mb-2">Our Team</h4>
+                      <p className="text-gray-500 text-xs leading-relaxed">Meet the engineering experts and technology leaders behind Elios.</p>
+                    </Link>
+                    <Link to="/about/investors" onClick={() => setHoveredMenu(null)} className="group p-6 rounded-2xl hover:bg-gray-50 transition-colors">
+                      <div className="w-12 h-12 bg-[#C9A227]/10 text-[#C9A227] rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <TrendingUp className="w-6 h-6" />
+                      </div>
+                      <h4 className="text-lg font-bold text-[#0B1F3A] mb-2">Investors</h4>
+                      <p className="text-gray-500 text-xs leading-relaxed">Financial performance, governance standards, and investment pillars.</p>
                     </Link>
                   </div>
                 </div>
@@ -326,7 +336,7 @@ const Navbar = () => {
             </motion.div>
           )}
 
-          {/* hoveredMenu === 'technologies' && (
+          {hoveredMenu === 'technologies' && (
             <motion.div 
               variants={megaMenuVariants} initial="hidden" animate="visible" exit="exit"
               className="max-w-7xl mx-auto px-6 md:px-12 py-12 pointer-events-auto"
@@ -356,7 +366,7 @@ const Navbar = () => {
                 </div>
               </div>
             </motion.div>
-          ) */}
+          )}
         </AnimatePresence>
       </div>
     </nav>

@@ -47,6 +47,7 @@ import HomePage from './pages/HomePage';
 import MissionVisionPage from './pages/About/MissionVisionPage';
 import TeamPage from './pages/About/TeamPage';
 import StoryPage from './pages/About/StoryPage';
+import InvestorsPage from './pages/About/InvestorsPage';
 
 import SapErpServicePage from './pages/Services/SapErpServicePage';
 import MigrationServicePage from './pages/Services/MigrationServicePage';
@@ -93,6 +94,8 @@ function App() {
           <Route path="about/mission-vision" element={<MissionVisionPage />} />
           <Route path="about/team" element={<TeamPage />} />
           <Route path="about/story" element={<StoryPage />} />
+          <Route path="about/investors" element={<InvestorsPage />} />
+          <Route path="investors" element={<Navigate to="/about/investors" replace />} />
           
           <Route path="services" element={<Navigate to="/sap-erp" replace />} />
           <Route path="technologies" element={<Navigate to="/data-analytics" replace />} />

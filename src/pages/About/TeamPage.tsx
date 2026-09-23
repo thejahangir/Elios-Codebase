@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, Mail } from 'lucide-react';
 import InnerPageHero from '../../components/InnerPageHero';
-import jahangirImg from '../../assets/executive_working.png';
+import raviImg from '../../assets/ravi.png';
+import viswaImg from '../../assets/viswa.png';
 
 // Custom SVG Icons
 const LinkedInIcon = ({ className }: { className?: string }) => (
@@ -25,64 +26,26 @@ const InstaIcon = ({ className }: { className?: string }) => (
 
 const teamMembers = [
   {
-    id: "michael-chen",
-    name: "Michael Chen",
+    id: "ravi-dharmala",
+    name: "Ravi Dharmala",
     role: "Chief Executive Officer",
-    image: jahangirImg,
-    bio: "With over 20 years of experience in enterprise technology, Michael leads our vision and strategic direction.",
-    fullBio: "Michael's career spans over two decades in Silicon Valley, leading cross-functional teams in top tier Fortune 500 companies. As CEO of Elios, he has pioneered multiple strategic shifts, steering the company toward cloud-native and AI-first paradigms. Under his leadership, the company has seen consistent year-over-year growth of 40%.",
-    expertise: ["Strategic Vision", "M&A", "Cloud Infrastructure", "Executive Leadership"],
-    quote: "Technology is only as powerful as the people and purpose behind it."
+    image: raviImg,
+    linkedin: "https://www.linkedin.com/in/ravi-dharmala-8a9455a1/",
+    bio: "Leading Elios Technologies with visionary strategic direction, driving enterprise growth, digital innovation, and global client partnerships.",
+    fullBio: "As Chief Executive Officer, Ravi Dharmala steers the strategic vision, global expansion, and operational excellence of Elios Technologies. With deep leadership acumen across enterprise IT services, digital transformation, and executive consulting, Ravi empowers organizations to scale securely and innovate continuously in dynamic global markets.",
+    expertise: ["Enterprise Strategy", "Executive Leadership", "Global Expansion", "Digital Transformation", "Client Value Creation"],
+    quote: "Empowering enterprises with transformative technology and enduring trust."
   },
   {
-    id: "sarah-jenkins",
-    name: "Sarah Jenkins",
-    role: "Chief Technology Officer",
-    image: jahangirImg,
-    bio: "Sarah pioneers our technical innovations, bringing expertise from top Silicon Valley tech giants.",
-    fullBio: "Sarah is a visionary technologist who served as a Principal Engineer at Google before joining Elios. She architects our core technical frameworks and ensures that our client solutions are built on highly scalable, resilient foundations.",
-    expertise: ["Distributed Systems", "Microservices Architecture", "Machine Learning", "Tech Strategy"],
-    quote: "Innovation isn't just about the latest tools; it's about solving the right problems elegantly."
-  },
-  {
-    id: "david-rodriguez",
-    name: "David Rodriguez",
-    role: "Head of Cloud Infrastructure",
-    image: jahangirImg,
-    bio: "An AWS and Azure certified architect, David ensures our clients' systems are robust and scalable.",
-    fullBio: "David has personally overseen the migration of over 200 enterprise systems to the cloud. His deep technical acumen spans multi-cloud architectures, Kubernetes, and severe fault-tolerance patterns.",
-    expertise: ["AWS / Azure / GCP", "Kubernetes", "DevSecOps", "Disaster Recovery"],
-    quote: "The cloud is not just a destination; it's a new way of operating your business."
-  },
-  {
-    id: "emily-watson",
-    name: "Emily Watson",
-    role: "Dir. of Digital Transformation",
-    image: jahangirImg,
-    bio: "Emily specializes in restructuring legacy systems and adopting modern digital workflows for enterprises.",
-    fullBio: "With a background in organizational psychology and enterprise software, Emily bridges the gap between human processes and technical implementation. She helps massive organizations overcome resistance to change.",
-    expertise: ["Change Management", "Process Optimization", "Agile Methodologies", "UI/UX Strategy"],
-    quote: "Digital transformation is 20% technology and 80% human psychology."
-  },
-  {
-    id: "james-thorne",
-    name: "James Thorne",
-    role: "Lead SAP Consultant",
-    image: jahangirImg,
-    bio: "James brings deep knowledge of SAP ERP implementations and optimizations across various industries.",
-    fullBio: "James has spent 15 years mastering the SAP ecosystem. From initial architecture to go-live, he has led ERP overhauls for global manufacturing and logistics giants.",
-    expertise: ["SAP S/4HANA", "ERP Architecture", "Supply Chain Mgmt", "System Integration"],
-    quote: "A well-implemented ERP is the central nervous system of any large enterprise."
-  },
-  {
-    id: "priya-sharma",
-    name: "Priya Sharma",
-    role: "Head of Data & AI",
-    image: jahangirImg,
-    bio: "Priya leads our AI initiatives, helping clients leverage their data for predictive insights.",
-    fullBio: "Priya holds a Ph.D. in Data Science and brings a rigorous academic background combined with sharp business acumen. She builds data pipelines that turn terabytes of raw unstructured data into actionable intelligence.",
-    expertise: ["Generative AI", "Predictive Modeling", "Data Lakes", "Big Data Analytics"],
-    quote: "Data is abundant, but true insight is rare and invaluable."
+    id: "viswa-k",
+    name: "Viswa K",
+    role: "Director (Business Unit & Account Management)",
+    image: viswaImg,
+    linkedin: "https://www.linkedin.com/in/vishwak1/?isSelfProfile=false",
+    bio: "Driving business unit strategy, key account growth, and strategic client relationships across global enterprise engagements.",
+    fullBio: "Viswa K leads Business Unit operations and strategic Account Management at Elios Technologies. Specializing in enterprise client success, delivery orchestration, and strategic partnership management, Viswa bridges business imperatives with high-impact technology solutions.",
+    expertise: ["Business Unit Leadership", "Account Management", "Enterprise Client Success", "Strategic Partnerships", "Revenue Growth"],
+    quote: "Client success is the cornerstone of sustainable enterprise relationships."
   }
 ];
 
@@ -153,9 +116,22 @@ const TeamPage = () => {
                   
                   <div className="mt-6 flex items-center justify-between border-t border-gray-100 pt-6">
                     <div className="flex gap-3">
-                      <div className="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center group-hover:bg-[#0B1F3A] group-hover:text-white transition-colors">
-                        <LinkedInIcon className="w-4 h-4" />
-                      </div>
+                      {member.linkedin ? (
+                        <a 
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-8 h-8 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center hover:bg-[#0B1F3A] hover:text-white transition-colors"
+                          title="LinkedIn Profile"
+                        >
+                          <LinkedInIcon className="w-4 h-4" />
+                        </a>
+                      ) : (
+                        <div className="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center group-hover:bg-[#0B1F3A] group-hover:text-white transition-colors">
+                          <LinkedInIcon className="w-4 h-4" />
+                        </div>
+                      )}
                       <div className="w-8 h-8 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center group-hover:bg-[#0B1F3A] group-hover:text-white transition-colors">
                         <XIcon className="w-4 h-4" />
                       </div>
@@ -217,18 +193,34 @@ const TeamPage = () => {
                   </motion.p>
                   
                   <div className="flex gap-4 justify-center md:justify-start">
-                    <button className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer">
-                      <LinkedInIcon className="w-4 h-4" />
-                    </button>
+                    {selectedMember.linkedin ? (
+                      <a 
+                        href={selectedMember.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer"
+                        title="LinkedIn Profile"
+                      >
+                        <LinkedInIcon className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <button className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer">
+                        <LinkedInIcon className="w-4 h-4" />
+                      </button>
+                    )}
                     <button className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer">
                       <XIcon className="w-4 h-4" />
                     </button>
                     <button className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer">
                       <InstaIcon className="w-4 h-4" />
                     </button>
-                    <button className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer">
+                    <a 
+                      href="mailto:contact@eliostechnologies.com"
+                      className="w-10 h-10 rounded-full bg-gray-50 shadow-sm text-[#0B1F3A] flex items-center justify-center hover:bg-[#C9A227] hover:text-white transition-colors border border-gray-100 cursor-pointer"
+                      title="Contact"
+                    >
                       <Mail className="w-4 h-4" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

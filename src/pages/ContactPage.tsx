@@ -1,6 +1,12 @@
-
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Send, Globe } from 'lucide-react';
+import { MapPin, Phone, Mail, Send, Globe, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_fdriwwb';
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_9y5mrvj';
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '9yR33YbGRqAQipn7D';
+const EMAILJS_TO_EMAIL = import.meta.env.VITE_EMAILJS_TO_EMAIL || 'elios.tech.26@gmail.com';
 
 const offices = [
   {
@@ -46,11 +52,89 @@ const offices = [
 ];
 
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage('');
+
+    if (!formData.firstName.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus('error');
+      setErrorMessage('Please fill in all required fields (First Name, Work Email, and Message).');
+      return;
+    }
+
+    setStatus('loading');
+
+    const templateParams = {
+      // Recipient fields
+      to_email: EMAILJS_TO_EMAIL,
+      recipient: EMAILJS_TO_EMAIL,
+      to_name: 'Elios Technologies',
+
+      // Sender identity
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      from_name: `${formData.firstName} ${formData.lastName}`.trim(),
+      name: `${formData.firstName} ${formData.lastName}`.trim(),
+      user_name: `${formData.firstName} ${formData.lastName}`.trim(),
+
+      // Email address fields
+      from_email: formData.email,
+      reply_to: formData.email,
+      user_email: formData.email,
+      email: formData.email,
+
+      // Content & service
+      service: formData.service || 'Not specified',
+      service_required: formData.service || 'Not specified',
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        service: '',
+        message: ''
+      });
+    } catch (error: any) {
+      console.error('EmailJS submission error:', error);
+      setStatus('error');
+      if (!EMAILJS_PUBLIC_KEY || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+        setErrorMessage('EmailJS Public Key is required. Please set VITE_EMAILJS_PUBLIC_KEY and VITE_EMAILJS_TEMPLATE_ID in your .env file.');
+      } else {
+        setErrorMessage(error?.text || error?.message || 'Failed to send message. Please verify your EmailJS service and template settings.');
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       
       {/* Custom Hero / Form Section */}
-      <section className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 bg-[#0B1F3A] overflow-hidden">
+      <section id="send-message" className="relative pt-32 lg:pt-48 pb-20 lg:pb-32 bg-[#0B1F3A] overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-gradient-to-b from-[#C9A227]/20 to-transparent blur-3xl" />
@@ -86,11 +170,11 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email Us Directly</p>
-                    <a href="mailto:Info@eliostechinc.com" className="font-bold text-white hover:text-[#C9A227] transition-colors block">
-                      Info@eliostechinc.com
+                    <a href="mailto:elios.tech.26@gmail.com" className="font-bold text-white hover:text-[#C9A227] transition-colors block">
+                      elios.tech.26@gmail.com
                     </a>
-                    <a href="mailto:hr@eliostechinc.com" className="text-sm text-gray-300 hover:text-[#C9A227] transition-colors block">
-                      hr@eliostechinc.com
+                    <a href="mailto:Info@eliostechinc.com" className="text-sm text-gray-300 hover:text-[#C9A227] transition-colors block">
+                      Info@eliostechinc.com
                     </a>
                   </div>
                 </div>
@@ -118,43 +202,122 @@ const ContactPage = () => {
                 
                 <h3 className="text-2xl font-bold text-white mb-8">Send us a message</h3>
                 
-                <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
+                {status === 'success' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    className="mb-6 p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 flex items-start gap-3"
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-bold text-white">Message sent successfully!</p>
+                      <p className="text-sm text-emerald-200/90 mt-1">Thank you for reaching out. Our team will review your inquiry and get back to you shortly.</p>
+                    </div>
+                  </motion.div>
+                )}
+
+                {status === 'error' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    className="mb-6 p-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-200 flex items-start gap-3"
+                  >
+                    <AlertCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-bold text-white">Submission Error</p>
+                      <p className="text-sm text-rose-200/90 mt-1">{errorMessage}</p>
+                    </div>
+                  </motion.div>
+                )}
+
+                <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-300">First Name</label>
-                      <input type="text" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227] focus:bg-white/10 transition-all" placeholder="John" />
+                      <label className="text-sm font-medium text-gray-300">First Name <span className="text-[#C9A227]">*</span></label>
+                      <input 
+                        type="text" 
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227] focus:bg-white/10 transition-all" 
+                        placeholder="John" 
+                      />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-300">Last Name</label>
-                      <input type="text" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227] focus:bg-white/10 transition-all" placeholder="Doe" />
+                      <input 
+                        type="text" 
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227] focus:bg-white/10 transition-all" 
+                        placeholder="Doe" 
+                      />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-300">Work Email</label>
-                    <input type="email" className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227] focus:bg-white/10 transition-all" placeholder="john@company.com" />
+                    <label className="text-sm font-medium text-gray-300">Work Email <span className="text-[#C9A227]">*</span></label>
+                    <input 
+                      type="email" 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227] focus:bg-white/10 transition-all" 
+                      placeholder="john@company.com" 
+                    />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-300">Service Required</label>
-                    <select className="w-full px-5 py-4 rounded-xl bg-[#122a4f] border border-white/10 text-white focus:outline-none focus:border-[#C9A227] transition-all appearance-none cursor-pointer">
-                      <option className="bg-[#0B1F3A]">Select a service...</option>
-                      <option className="bg-[#0B1F3A]">SAP ERP Services</option>
-                      <option className="bg-[#0B1F3A]">Cloud Migration</option>
-                      <option className="bg-[#0B1F3A]">Application Development</option>
-                      <option className="bg-[#0B1F3A]">Cyber Security</option>
-                      <option className="bg-[#0B1F3A]">Other Inquiry</option>
+                    <select 
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      className="w-full px-5 py-4 rounded-xl bg-[#122a4f] border border-white/10 text-white focus:outline-none focus:border-[#C9A227] transition-all appearance-none cursor-pointer"
+                    >
+                      <option value="" className="bg-[#0B1F3A]">Select a service...</option>
+                      <option value="SAP ERP Services" className="bg-[#0B1F3A]">SAP ERP Services</option>
+                      <option value="Cloud Migration" className="bg-[#0B1F3A]">Cloud Migration</option>
+                      <option value="Application Development" className="bg-[#0B1F3A]">Application Development</option>
+                      <option value="Cyber Security" className="bg-[#0B1F3A]">Cyber Security</option>
+                      <option value="Offshore Development Center" className="bg-[#0B1F3A]">Offshore Development Center</option>
+                      <option value="Oracle Practices" className="bg-[#0B1F3A]">Oracle Practices</option>
+                      <option value="Other Inquiry" className="bg-[#0B1F3A]">Other Inquiry</option>
                     </select>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-300">Message</label>
-                    <textarea rows={4} className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227] focus:bg-white/10 transition-all resize-none" placeholder="Tell us about your requirements..."></textarea>
+                    <label className="text-sm font-medium text-gray-300">Message <span className="text-[#C9A227]">*</span></label>
+                    <textarea 
+                      rows={4} 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-5 py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#C9A227] focus:bg-white/10 transition-all resize-none" 
+                      placeholder="Tell us about your requirements..."
+                    ></textarea>
                   </div>
 
-                  <button type="submit" className="w-full bg-[#C9A227] hover:bg-white text-[#0B1F3A] font-bold text-lg py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(201,162,39,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] group">
-                    <span>Submit Request</span>
-                    <Send className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                  <button 
+                    type="submit" 
+                    disabled={status === 'loading'}
+                    className="w-full bg-[#C9A227] hover:bg-white text-[#0B1F3A] font-bold text-lg py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(201,162,39,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] group disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+                  >
+                    {status === 'loading' ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        <span>Sending Message...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Request</span>
+                        <Send className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>

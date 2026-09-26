@@ -121,7 +121,13 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-center pt-10 pb-8 border-t border-white/10">
           <h4 className="font-semibold text-white tracking-[0.2em] uppercase text-xs mb-8">Follow us on</h4>
           <div className="flex gap-6">
-            <a href="#" aria-label="LinkedIn" className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#C9A227] hover:border-[#C9A227] hover:text-[#0B1F3A] hover:-translate-y-1 transition-all duration-300 shadow-sm">
+            <a 
+              href="https://www.linkedin.com/company/eliostechinc" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="LinkedIn" 
+              className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#C9A227] hover:border-[#C9A227] hover:text-[#0B1F3A] hover:-translate-y-1 transition-all duration-300 shadow-sm"
+            >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd" />
               </svg>

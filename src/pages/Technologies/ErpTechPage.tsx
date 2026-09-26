@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Briefcase, Users, Server, Cloud, Lightbulb, 
@@ -233,13 +234,12 @@ const ErpTechPage = () => {
           <motion.p {...fadeIn} className="text-blue-100 mb-8 text-lg">
             Let our experts help you design, implement, and manage your ERP ecosystem.
           </motion.p>
-          <motion.a 
-            {...fadeIn}
-            href="/contact-us" 
+          <Link 
+            to="/contact" 
             className="inline-block bg-blue-600 text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-blue-500 hover:-translate-y-1 transition-all duration-300"
           >
             Schedule a Consultation
-          </motion.a>
+          </Link>
         </div>
       </section>
     </div>

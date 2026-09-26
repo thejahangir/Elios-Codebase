@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Cloud, Database, Settings, Activity, Shield, Users, 
@@ -324,13 +325,12 @@ const OraclePracticesTechPage = () => {
           <motion.p {...fadeIn} className="text-blue-100 mb-8 text-lg">
             Let our experts guide your enterprise through its Oracle transformation journey.
           </motion.p>
-          <motion.a 
-            {...fadeIn}
-            href="/contact-us" 
+          <Link 
+            to="/contact" 
             className="inline-block bg-white text-[#0B1F3A] font-bold py-4 px-10 rounded-full shadow-lg hover:bg-gray-100 hover:-translate-y-1 transition-all duration-300"
           >
             Schedule a Consultation
-          </motion.a>
+          </Link>
         </div>
       </section>
     </div>

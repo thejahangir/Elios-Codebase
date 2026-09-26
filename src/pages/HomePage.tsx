@@ -183,7 +183,7 @@ const HomePage = () => {
                 <p className="text-xl text-gray-500 leading-relaxed font-light mb-10">
                   Elios Technologies partners with organizations to solve complex technology challenges—from application development and migration to cloud, infrastructure, testing and managed operations. We don't just write code; we engineer business outcomes.
                 </p>
-                <Link to="/about" className="group inline-flex items-center gap-4 text-lg font-semibold text-[#0B1F3A] hover:text-[#C9A227] transition-colors">
+                <Link to="/about/mission-vision" className="group inline-flex items-center gap-4 text-lg font-semibold text-[#0B1F3A] hover:text-[#C9A227] transition-colors">
                   <span className="border-b-2 border-transparent group-hover:border-[#C9A227] pb-1 transition-all">Discover Elios</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                 </Link>
@@ -230,15 +230,15 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: 'App Development', icon: <Code strokeWidth={1.5} />, desc: 'Custom enterprise software, mobile applications, and modern architectures.' },
-              { title: 'Migration Services', icon: <Replace strokeWidth={1.5} />, desc: 'Seamless transition of legacy systems to modern, scalable environments.' },
-              { title: 'Cloud & DevOps', icon: <Cloud strokeWidth={1.5} />, desc: 'Scalable cloud infrastructure, automation, and continuous delivery.' },
-              { title: 'Managed Services', icon: <Settings strokeWidth={1.5} />, desc: 'Reliable IT operations, robust support, and continuous optimization.' },
-              { title: 'QA & Testing', icon: <Shield strokeWidth={1.5} />, desc: 'Comprehensive quality assurance and automated testing pipelines.' },
-              { title: 'RPO Services', icon: <Users strokeWidth={1.5} />, desc: 'Strategic recruitment process outsourcing to build world-class teams.' },
+              { title: 'App Development', path: '/application-development', icon: <Code strokeWidth={1.5} />, desc: 'Custom enterprise software, mobile applications, and modern architectures.' },
+              { title: 'Migration Services', path: '/migration', icon: <Replace strokeWidth={1.5} />, desc: 'Seamless transition of legacy systems to modern, scalable environments.' },
+              { title: 'Cloud & DevOps', path: '/cloud-devops', icon: <Cloud strokeWidth={1.5} />, desc: 'Scalable cloud infrastructure, automation, and continuous delivery.' },
+              { title: 'Managed Services', path: '/managed-services', icon: <Settings strokeWidth={1.5} />, desc: 'Reliable IT operations, robust support, and continuous optimization.' },
+              { title: 'QA & Testing', path: '/qa-testing', icon: <Shield strokeWidth={1.5} />, desc: 'Comprehensive quality assurance and automated testing pipelines.' },
+              { title: 'RPO Services', path: '/recruitment-rpo', icon: <Users strokeWidth={1.5} />, desc: 'Strategic recruitment process outsourcing to build world-class teams.' },
             ].map((service, i) => (
               <FadeIn key={i} delay={0.1 * i}>
-                <Link to={`/services`} className="group relative p-10 h-full flex flex-col bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-[0_30px_60px_-15px_rgba(11,31,58,0.1)] transition-all duration-500 border border-transparent hover:border-gray-100 transform hover:-translate-y-2">
+                <Link to={service.path} className="group relative p-10 h-full flex flex-col bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-[0_30px_60px_-15px_rgba(11,31,58,0.1)] transition-all duration-500 border border-transparent hover:border-gray-100 transform hover:-translate-y-2">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#C9A227]/10 to-transparent rounded-bl-full -mr-16 -mt-16 transition-transform duration-700 group-hover:scale-[2.5]" />
                   
                   <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-[#0B1F3A] mb-8 relative z-10 overflow-hidden group-hover:shadow-md transition-all duration-500">
@@ -329,10 +329,10 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {[
-              { num: '01', title: 'Simplify digital transformation', desc: 'Elios Consult helps you drive innovation and simplify digital transformation with strategic visioning, architecture design, and organizational change management.', link: 'Discover Elios Consult', bg: heroBg1Img },
-              { num: '02', title: 'Overcome business challenges', desc: 'Our services combine deep industry expertise with modern skills and advanced technology to help you overcome business challenges and uncover new opportunities for growth.', link: 'Explore our services', bg: heroBg2Img },
-              { num: '03', title: 'Orchestrate and innovate', desc: 'Elios Platform is an open integration platform designed to help orchestrate and innovate across your IT environment, enabling continuous learning and quicker time to value.', link: 'Learn about Elios Platform', bg: heroBg3Img },
-              { num: '04', title: 'Enable hybrid IT with strategic partners', desc: 'Be confident that you\'re making the right technology investments with global alliance partnerships that enable today\'s complex hybrid ecosystems.', link: 'Explore our partners', bg: heroBg4Img }
+              { num: '01', title: 'Simplify digital transformation', desc: 'Elios Consult helps you drive innovation and simplify digital transformation with strategic visioning, architecture design, and organizational change management.', link: 'Discover Elios Consult', path: '/elios-consult', bg: heroBg1Img },
+              { num: '02', title: 'Overcome business challenges', desc: 'Our services combine deep industry expertise with modern skills and advanced technology to help you overcome business challenges and uncover new opportunities for growth.', link: 'Explore our services', path: '/services', bg: heroBg2Img },
+              { num: '03', title: 'Orchestrate and innovate', desc: 'Elios Platform is an open integration platform designed to help orchestrate and innovate across your IT environment, enabling continuous learning and quicker time to value.', link: 'Learn about Elios Platform', path: '/elios-platform', bg: heroBg3Img },
+              { num: '04', title: 'Enable hybrid IT with strategic partners', desc: 'Be confident that you\'re making the right technology investments with global alliance partnerships that enable today\'s complex hybrid ecosystems.', link: 'Explore our partners', path: '#global-network', bg: heroBg4Img }
             ].map((item, i) => (
               <FadeIn key={i} delay={0.1 * i} className="flex flex-col group h-full">
                 <div className="relative h-24 lg:h-32 mb-6 w-[85%]">
@@ -354,9 +354,15 @@ const HomePage = () => {
                 <p className="text-gray-500 font-light leading-relaxed mb-8 flex-grow">
                   {item.desc}
                 </p>
-                <Link to="/services" className="inline-flex items-center gap-2 font-semibold text-[#0B1F3A] group-hover:text-[#C9A227] transition-colors mt-auto border-b-2 border-transparent group-hover:border-[#C9A227] pb-1 self-start">
-                  {item.link} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                {item.path.startsWith('#') ? (
+                  <a href={item.path} className="inline-flex items-center gap-2 font-semibold text-[#0B1F3A] group-hover:text-[#C9A227] transition-colors mt-auto border-b-2 border-transparent group-hover:border-[#C9A227] pb-1 self-start cursor-pointer">
+                    {item.link} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                ) : (
+                  <Link to={item.path} className="inline-flex items-center gap-2 font-semibold text-[#0B1F3A] group-hover:text-[#C9A227] transition-colors mt-auto border-b-2 border-transparent group-hover:border-[#C9A227] pb-1 self-start">
+                    {item.link} <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                )}
               </FadeIn>
             ))}
           </div>
@@ -364,7 +370,7 @@ const HomePage = () => {
       </section>
 
       {/* PARTNERS & CLIENTS SECTION - Clean Monochrome Enterprise Layout */}
-      <section className="py-24 bg-[#F4F6F8] relative overflow-hidden">
+      <section id="global-network" className="py-24 bg-[#F4F6F8] relative overflow-hidden">
         {/* Background slanted shapes similar to attachment */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[120%] bg-[#E8EDF2] transform rotate-12 -z-10" />

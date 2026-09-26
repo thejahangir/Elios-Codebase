@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   ShieldCheck, AlertTriangle, Users, TrendingUp, 
@@ -204,13 +205,12 @@ const QaTestingServicePage = () => {
           <motion.p {...fadeIn} className="text-blue-100 mb-8 text-lg">
             Partner with Eliostech today for reliable, robust, and expert QA & Testing Services.
           </motion.p>
-          <motion.a 
-            {...fadeIn}
-            href="/contact-us" 
+          <Link 
+            to="/contact" 
             className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-500 hover:-translate-y-1 transition-all duration-300"
           >
             Contact Us
-          </motion.a>
+          </Link>
         </div>
       </section>
     </div>

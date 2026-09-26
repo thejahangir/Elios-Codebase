@@ -95,21 +95,30 @@ const Navbar = () => {
         <div className={`hidden lg:flex items-center gap-2 font-semibold text-sm tracking-wide ${isScrolled || hoveredMenu ? 'text-gray-600' : 'text-gray-100'}`}>
           
           <div className={`relative flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={() => handleMouseEnter('about')}>
-            <Link to="/about" className={`px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors ${hoveredMenu === 'about' ? 'text-[#0B1F3A] bg-gray-100/50' : 'hover:text-[#C9A227]'}`}>
+            <button 
+              type="button"
+              className={`px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors cursor-pointer ${hoveredMenu === 'about' ? 'text-[#0B1F3A] bg-gray-100/50' : 'hover:text-[#C9A227]'}`}
+            >
               About Us <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${hoveredMenu === 'about' ? 'rotate-180' : ''}`} />
-            </Link>
+            </button>
           </div>
 
           <div className={`relative flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={() => handleMouseEnter('services')}>
-            <Link to="/services" className={`px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors ${hoveredMenu === 'services' ? 'text-[#0B1F3A] bg-gray-100/50' : 'hover:text-[#C9A227]'}`}>
+            <button 
+              type="button"
+              className={`px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors cursor-pointer ${hoveredMenu === 'services' ? 'text-[#0B1F3A] bg-gray-100/50' : 'hover:text-[#C9A227]'}`}
+            >
               Services <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${hoveredMenu === 'services' ? 'rotate-180' : ''}`} />
-            </Link>
+            </button>
           </div>
 
           <div className={`relative flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={() => handleMouseEnter('technologies')}>
-            <Link to="/technologies" className={`px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors ${hoveredMenu === 'technologies' ? 'text-[#0B1F3A] bg-gray-100/50' : 'hover:text-[#C9A227]'}`}>
+            <button 
+              type="button"
+              className={`px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors cursor-pointer ${hoveredMenu === 'technologies' ? 'text-[#0B1F3A] bg-gray-100/50' : 'hover:text-[#C9A227]'}`}
+            >
               Technologies <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${hoveredMenu === 'technologies' ? 'rotate-180' : ''}`} />
-            </Link>
+            </button>
           </div>
 
           <div className={`flex items-center transition-all duration-300 ${navHeight}`} onMouseEnter={handleMouseLeave}>

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Building, Settings, FileText, CheckCircle2, 
@@ -136,13 +137,12 @@ const ArchitecturalWorkshopsServicePage = () => {
           <motion.p {...fadeIn} className="text-blue-100 mb-8 text-lg">
             Connect with our industry experts to start planning your technical roadmap today.
           </motion.p>
-          <motion.a 
-            {...fadeIn}
-            href="/contact-us" 
+          <Link 
+            to="/contact" 
             className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-500 hover:-translate-y-1 transition-all duration-300"
           >
             Schedule a Workshop
-          </motion.a>
+          </Link>
         </div>
       </section>
     </div>

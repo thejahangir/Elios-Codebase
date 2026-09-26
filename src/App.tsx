@@ -81,6 +81,9 @@ import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
 import BlogPage from './pages/BlogPage';
 import DesignLabPage from './pages/DesignLabPage';
+import AllServicesPage from './pages/Services/AllServicesPage';
+import EliosConsultPage from './pages/EliosConsultPage';
+import EliosPlatformPage from './pages/EliosPlatformPage';
 
 const AboutPage = () => <div className="pt-24 px-8 min-h-screen">About Us Placeholder</div>;
 const NotFoundPage = () => <div className="pt-24 px-8 min-h-screen flex flex-col items-center justify-center"><h1>404 Not Found</h1></div>;
@@ -98,8 +101,14 @@ function App() {
           <Route path="about/investors" element={<InvestorsPage />} />
           <Route path="investors" element={<Navigate to="/about/investors" replace />} />
           
-          <Route path="services" element={<Navigate to="/sap-erp" replace />} />
+          <Route path="services" element={<AllServicesPage />} />
+          <Route path="all-services" element={<Navigate to="/services" replace />} />
           <Route path="technologies" element={<Navigate to="/data-analytics" replace />} />
+
+          <Route path="elios-consult" element={<EliosConsultPage />} />
+          <Route path="consult" element={<Navigate to="/elios-consult" replace />} />
+          <Route path="elios-platform" element={<EliosPlatformPage />} />
+          <Route path="platform" element={<Navigate to="/elios-platform" replace />} />
 
           <Route path="sap-erp" element={<SapErpServicePage />} />
           <Route path="migration" element={<MigrationServicePage />} />
@@ -134,6 +143,7 @@ function App() {
           
           <Route path="careers" element={<CareersPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="contact-us" element={<Navigate to="/contact" replace />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="design-lab" element={<DesignLabPage />} />
           <Route path="*" element={<NotFoundPage />} />

@@ -1,14 +1,134 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Building2, Users, Network, Code, Briefcase, Workflow, CheckCircle2, Repeat, LayoutTemplate,
   Target, Zap, ShieldCheck, PieChart, Activity, Database, Server, Smartphone, MonitorSmartphone,
   ChevronRight, ArrowUpRight, Cpu, Layers, Globe, Star, Landmark, Shield, Stethoscope, 
-  Building, BarChart, Rocket, CheckSquare, Handshake, Lightbulb, PenTool, Scale
+  Building, BarChart, Rocket, CheckSquare, Handshake, Lightbulb, PenTool, Scale, X
 } from 'lucide-react';
 
 const defaultHeroBg = "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80";
+
+const techStackDetails: Record<string, {
+  name: string;
+  tagline: string;
+  category: string;
+  badgeColor: string;
+  description: string;
+  capabilities: string[];
+  useCases: string[];
+}> = {
+  Kafka: {
+    name: "Apache Kafka",
+    tagline: "Real-Time Event Streaming & Pega Decisioning",
+    category: "Event Streaming & Messaging",
+    badgeColor: "bg-amber-50 text-amber-800 border-amber-200",
+    description: "Seamlessly ingest high-throughput real-time event streams into Pega Customer Decision Hub (CDH) and Case Management for sub-second event processing and adaptive Next-Best-Action recommendations.",
+    capabilities: [
+      "Bi-directional Pega-Kafka connectors with guaranteed message delivery",
+      "Real-time event stream ingestion for Customer Decision Hub (CDH)",
+      "Dead-letter queue (DLQ) automated error routing & recovery",
+      "Distributed transactions across microservices with schema registry support"
+    ],
+    useCases: [
+      "Real-time fraud detection and instant transaction alerts",
+      "Event-driven customer retention and personalized cross-sell triggers",
+      "High-volume IoT device telemetry ingestion and automated case creation"
+    ]
+  },
+  Salesforce: {
+    name: "Salesforce CRM",
+    tagline: "Front-Office Engagement & Back-Office Pega Orchestration",
+    category: "CRM & Customer Engagement",
+    badgeColor: "bg-sky-50 text-sky-800 border-sky-200",
+    description: "Unify front-office Salesforce customer engagement with back-office Pega workflow automation to eliminate data silos and accelerate end-to-end case resolution across enterprise channels.",
+    capabilities: [
+      "Bi-directional REST and OpenAPI sync with real-time data binding",
+      "Embedded Pega Process Fabric inside Salesforce Lightning UI",
+      "Automated lead-to-order routing and multi-tier approval matrix",
+      "Unified Customer 360 view with synchronized interaction histories"
+    ],
+    useCases: [
+      "Omnichannel customer service case resolution with SLA automation",
+      "Complex quote-to-cash approvals bridging CRM and ERP backends",
+      "Unified agent desktop embedding Pega next-best-actions inside Salesforce"
+    ]
+  },
+  AWS: {
+    name: "Amazon Web Services (AWS)",
+    tagline: "Cloud-Native Scalability & Pega Cloud Deployments",
+    category: "Cloud Infrastructure & Serverless",
+    badgeColor: "bg-orange-50 text-orange-800 border-orange-200",
+    description: "Deploy, scale, and optimize enterprise Pega applications on AWS utilizing elastic container orchestration (EKS), Aurora PostgreSQL, S3 data lakes, and Amazon Bedrock Generative AI services.",
+    capabilities: [
+      "Containerized Pega deployment on Amazon EKS with auto-scaling",
+      "Secure VPC peering, KMS encryption, and IAM role federation",
+      "Amazon S3 & AWS Glue data pipeline integration for decisioning models",
+      "High-availability multi-AZ failover and disaster recovery automation"
+    ],
+    useCases: [
+      "Enterprise Pega cloud migrations from legacy on-premises datacenters",
+      "Elastic scaling for peak seasonal workloads and global retail events",
+      "Secure sovereign cloud hosting complying with HIPAA, GDPR, and FedRAMP"
+    ]
+  },
+  MuleSoft: {
+    name: "MuleSoft Anypoint",
+    tagline: "API-Led Enterprise Connectivity & Data Orchestration",
+    category: "Enterprise Integration & API Management",
+    badgeColor: "bg-indigo-50 text-indigo-800 border-indigo-200",
+    description: "Leverage MuleSoft Anypoint Platform to orchestrate API contracts between Pega Digital Process Automation (DPA) and complex legacy mainframes, databases, and third-party partners.",
+    capabilities: [
+      "3-tier API-led architecture (System, Process, and Experience APIs)",
+      "Standardized RAML / OpenAPI schemas with automated payload transformation",
+      "Centralized API governance, rate limiting, and OAuth2 token management",
+      "Low-latency asynchronous messaging and pub/sub event routing"
+    ],
+    useCases: [
+      "Legacy core banking and insurance mainframe modernization",
+      "Open Banking and Open Insurance API integration ecosystems",
+      "Global supply chain partner integration with automated validation"
+    ]
+  },
+  Oracle: {
+    name: "Oracle Cloud & Database",
+    tagline: "Enterprise Database & Oracle Fusion Ecosystem Sync",
+    category: "Database & Enterprise Applications",
+    badgeColor: "bg-rose-50 text-rose-800 border-rose-200",
+    description: "Directly integrate Pega with Oracle Database, Autonomous Data Warehouse, and Oracle Fusion ERP Cloud for real-time financial, ledger, and supply chain operational updates.",
+    capabilities: [
+      "High-performance JDBC connectivity with Oracle RAC cluster support",
+      "Event-driven integration with Oracle Fusion Cloud ERP & SCM",
+      "Secure data mapping and PL/SQL stored procedure orchestration",
+      "Automated financial reconciliation and compliance audit trails"
+    ],
+    useCases: [
+      "Enterprise procurement and automated vendor invoice approvals",
+      "Global multi-currency financial close and exception handling",
+      "Complex billing dispute resolution and automated account adjustments"
+    ]
+  },
+  SAP: {
+    name: "SAP S/4HANA",
+    tagline: "S/4HANA Modernization & Agile Process Automation",
+    category: "Enterprise Resource Planning (ERP)",
+    badgeColor: "bg-blue-50 text-blue-800 border-blue-200",
+    description: "Supercharge your SAP S/4HANA digital core with Pega’s agile low-code workflow engine, bridging legacy ERP complexity with streamlined customer and employee journeys.",
+    capabilities: [
+      "Real-time RFC, BAPI, and OData service connections with SAP",
+      "Clean-core extension architecture avoiding ABAP customizations",
+      "Automated master data governance and cross-departmental approvals",
+      "End-to-end Order-to-Cash (O2C) and Procure-to-Pay (P2P) automation"
+    ],
+    useCases: [
+      "Complex dynamic order orchestration across global SAP instances",
+      "Automated customer dispute and credit claim management",
+      "Unified employee onboarding and CAPEX expenditure authorization"
+    ]
+  }
+};
 
 const PegaPracticesTechPage = () => {
   const fadeIn = {
@@ -34,8 +154,12 @@ const PegaPracticesTechPage = () => {
   const [roiCurrentProcessCount, setRoiCurrentProcessCount] = useState(10);
   const [roiManualEffort, setRoiManualEffort] = useState(100);
   const [roiTeamSize, setRoiTeamSize] = useState(5);
+  const [selectedTech, setSelectedTech] = useState<string | null>(null);
+  const [showAssessmentModal, setShowAssessmentModal] = useState(false);
   
   const estimatedSavings = (roiCurrentProcessCount * roiManualEffort * roiTeamSize * 0.4).toFixed(0);
+
+  const activeTechModal = selectedTech ? techStackDetails[selectedTech] : null;
 
   return (
     <div className="bg-gray-50 min-h-screen font-sans text-gray-800 selection:bg-blue-600 selection:text-white">
@@ -216,20 +340,35 @@ const PegaPracticesTechPage = () => {
                   </div>
                 </div>
               </div>
-              <button className="w-full py-4 bg-gray-50 border border-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all flex justify-center items-center gap-2">
+              <button 
+                type="button"
+                onClick={() => setShowAssessmentModal(true)}
+                className="w-full py-4 bg-gray-50 border border-gray-200 text-gray-800 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all flex justify-center items-center gap-2 cursor-pointer"
+              >
                 Launch Assessment <ChevronRight className="w-4 h-4" />
               </button>
             </motion.div>
 
             {/* Tech Stack Showcase */}
             <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm flex flex-col">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Tech Stack Showcase</h3>
-              <p className="text-gray-500 mb-8 text-sm font-light">Interactive grid displaying integrations with Kafka, Salesforce, AWS, MuleSoft, Oracle, and SAP.</p>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold text-gray-900">Tech Stack Showcase</h3>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full">
+                  Click to View
+                </span>
+              </div>
+              <p className="text-gray-500 mb-8 text-sm font-light">Interactive grid displaying architectural integrations with Kafka, Salesforce, AWS, MuleSoft, Oracle, and SAP.</p>
               <div className="grid grid-cols-2 gap-4 flex-grow">
                 {['Kafka', 'Salesforce', 'AWS', 'MuleSoft', 'Oracle', 'SAP'].map((tech) => (
-                  <div key={tech} className="bg-gray-50 border border-gray-200 rounded-xl p-4 flex items-center justify-center text-sm font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 hover:border-blue-200 transition-colors cursor-pointer">
-                    {tech}
-                  </div>
+                  <button
+                    key={tech} 
+                    type="button"
+                    onClick={() => setSelectedTech(tech)}
+                    className="bg-gray-50 border border-gray-200 rounded-xl p-4 flex items-center justify-between text-sm font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 hover:border-blue-200 hover:shadow-sm transition-all cursor-pointer group text-left"
+                  >
+                    <span>{tech}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </button>
                 ))}
               </div>
             </motion.div>
@@ -255,13 +394,12 @@ const PegaPracticesTechPage = () => {
               { name: "Govt Sector", icon: <Building className="w-4 h-4 mr-2" /> },
               { name: "Telecom & Utilities", icon: <Zap className="w-4 h-4 mr-2" /> }
             ].map((ind, idx) => (
-              <motion.span 
+              <span 
                 key={idx} 
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center px-6 py-3 bg-white text-gray-700 hover:text-blue-600 rounded-full font-bold text-sm border border-gray-200 shadow-sm hover:border-blue-200 hover:shadow-md transition-all cursor-pointer"
+                className="flex items-center px-6 py-3 bg-white text-gray-700 rounded-full font-semibold text-sm border border-gray-200/80 shadow-sm select-none"
               >
                 {ind.icon} {ind.name}
-              </motion.span>
+              </span>
             ))}
           </div>
 
@@ -397,15 +535,188 @@ const PegaPracticesTechPage = () => {
           <motion.h2 {...fadeIn} className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
             Elevate Your Enterprise Architecture
           </motion.h2>
-          <motion.a 
-            {...fadeIn}
-            href="/contact-us" 
+          <Link 
+            to="/contact" 
             className="inline-flex items-center gap-3 bg-white text-blue-900 font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl hover:bg-gray-50 hover:-translate-y-1 transition-all duration-300"
           >
             Schedule a Consultation <ArrowUpRight className="w-5 h-5" />
-          </motion.a>
+          </Link>
         </div>
       </section>
+
+      {/* Tech Stack Detail Modal */}
+      <AnimatePresence>
+        {selectedTech && activeTechModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedTech(null)}
+              className="fixed inset-0 bg-[#0B1F3A]/70 backdrop-blur-sm cursor-pointer"
+            />
+
+            {/* Modal Box */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl z-10 overflow-hidden my-8 border border-gray-100"
+            >
+              {/* Close Button */}
+              <button 
+                type="button"
+                onClick={() => setSelectedTech(null)}
+                className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-gray-100 hover:bg-[#0B1F3A] text-gray-500 hover:text-white flex items-center justify-center transition-all cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Modal Header */}
+              <div className="bg-[#0B1F3A] p-6 sm:p-8 text-white relative overflow-hidden">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#C9A227]/20 rounded-full blur-2xl pointer-events-none" />
+                <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border ${activeTechModal.badgeColor}`}>
+                  {activeTechModal.category}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
+                  {activeTechModal.name}
+                </h3>
+                <p className="text-[#C9A227] text-sm font-medium">
+                  {activeTechModal.tagline}
+                </p>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6 sm:p-8 max-h-[70vh] overflow-y-auto space-y-6">
+                {/* Description */}
+                <div>
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-gray-400 mb-2">Integration Overview</h4>
+                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+                    {activeTechModal.description}
+                  </p>
+                </div>
+
+                {/* Key Capabilities */}
+                <div>
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-gray-400 mb-3">Key Integration Capabilities</h4>
+                  <div className="space-y-2.5">
+                    {activeTechModal.capabilities.map((cap, idx) => (
+                      <div key={idx} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+                        <span className="text-sm text-gray-700 leading-relaxed font-medium">{cap}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Common Use Cases */}
+                <div>
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-gray-400 mb-3">Strategic Enterprise Use Cases</h4>
+                  <div className="space-y-2">
+                    {activeTechModal.useCases.map((uc, idx) => (
+                      <div key={idx} className="flex items-start gap-3 text-sm text-gray-600">
+                        <Zap className="w-4 h-4 text-[#C9A227] mt-0.5 shrink-0" />
+                        <span className="leading-relaxed">{uc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Action Bar */}
+                <div className="pt-6 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <span className="text-xs text-gray-400 hidden sm:inline">
+                    Pega Practice Architecture & Integration
+                  </span>
+                  <div className="flex items-center gap-3 w-full sm:w-auto">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedTech(null)}
+                      className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 text-sm font-semibold transition-colors cursor-pointer"
+                    >
+                      Close
+                    </button>
+                    <Link
+                      to="/contact"
+                      className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#0B1F3A] hover:bg-[#C9A227] text-white hover:text-[#0B1F3A] text-sm font-bold transition-colors text-center cursor-pointer shadow-md"
+                    >
+                      Discuss Integration
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* Assessment Sales Contact Modal */}
+      <AnimatePresence>
+        {showAssessmentModal && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowAssessmentModal(false)}
+              className="fixed inset-0 bg-[#0B1F3A]/70 backdrop-blur-sm cursor-pointer"
+            />
+
+            {/* Modal Card */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl z-10 overflow-hidden my-8 border border-gray-100 p-6 sm:p-8 text-center"
+            >
+              {/* Close Button */}
+              <button 
+                type="button"
+                onClick={() => setShowAssessmentModal(false)}
+                className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 flex items-center justify-center transition-all cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              {/* Icon */}
+              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm border border-blue-100">
+                <ShieldCheck className="w-8 h-8 text-blue-600" />
+              </div>
+
+              {/* Title & Description */}
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Pega Guardrail Assessment
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-8">
+                To launch a tailored Pega Guardrail & Architecture Health Check, would you like to connect with our enterprise sales and solutions team?
+              </p>
+
+              {/* Actions */}
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowAssessmentModal(false)}
+                  className="w-1/2 py-3 px-4 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 text-sm font-semibold transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <Link
+                  to="/contact"
+                  className="w-1/2 py-3 px-4 rounded-xl bg-[#0B1F3A] hover:bg-[#C9A227] text-white hover:text-[#0B1F3A] text-sm font-bold transition-all text-center cursor-pointer shadow-md flex items-center justify-center gap-2"
+                >
+                  <span>Yes</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
       
     </div>
   );

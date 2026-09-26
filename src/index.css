@@ -20,7 +20,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-black tracking-tight;
+    @apply font-heading tracking-tight;
   }
 }
 

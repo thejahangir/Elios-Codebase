@@ -700,7 +700,7 @@ const OffshoreDevelopmentCenterServicePage = () => {
             <span className="text-[#C9A227] font-bold text-xs tracking-widest uppercase mb-4 block">
               Scale Your Technology Delivery
             </span>
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
               Build Your Extended Oracle & SAP Technology Team with Elios
             </h2>
             <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">

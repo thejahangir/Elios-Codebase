@@ -1,5 +1,6 @@
 // @ts-nocheck
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Network, ShoppingCart, Truck, Globe, RotateCcw, 
@@ -221,13 +222,12 @@ const IbmOmsTechPage = () => {
           <motion.p {...fadeIn} className="text-blue-100 mb-8 text-lg">
             Let's discuss how IBM Sterling OMS can solve your B2B and retail fulfillment challenges.
           </motion.p>
-          <motion.a 
-            {...fadeIn}
-            href="/contact-us" 
+          <Link 
+            to="/contact" 
             className="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-500 hover:-translate-y-1 transition-all duration-300"
           >
             Schedule a Consultation
-          </motion.a>
+          </Link>
         </div>
       </section>
     </div>

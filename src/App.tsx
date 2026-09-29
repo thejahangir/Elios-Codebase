@@ -88,9 +88,16 @@ import EliosPlatformPage from './pages/EliosPlatformPage';
 const AboutPage = () => <div className="pt-24 px-8 min-h-screen">About Us Placeholder</div>;
 const NotFoundPage = () => <div className="pt-24 px-8 min-h-screen flex flex-col items-center justify-center"><h1>404 Not Found</h1></div>;
 
+const getBasename = () => {
+  if (typeof window !== 'undefined' && window.location.pathname.startsWith('/Elios-Codebase')) {
+    return '/Elios-Codebase';
+  }
+  return import.meta.env.BASE_URL || '/';
+};
+
 function App() {
   return (
-    <ErrorBoundary><BrowserRouter basename={import.meta.env.BASE_URL}>
+    <ErrorBoundary><BrowserRouter basename={getBasename()}>
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<HomePage />} />
@@ -111,6 +118,8 @@ function App() {
           <Route path="platform" element={<Navigate to="/elios-platform" replace />} />
 
           <Route path="sap-erp" element={<SapErpServicePage />} />
+          <Route path="sap-service" element={<Navigate to="/sap-erp" replace />} />
+          <Route path="sap-services" element={<Navigate to="/sap-erp" replace />} />
           <Route path="migration" element={<MigrationServicePage />} />
           <Route path="application-development" element={<ApplicationDevelopmentServicePage />} />
           <Route path="life-cycle-management" element={<LifeCycleManagementServicePage />} />
@@ -137,8 +146,14 @@ function App() {
           <Route path="digital-experience" element={<DigitalExperienceTechPage />} />
           <Route path="eam-iot" element={<EamIotTechPage />} />
           <Route path="oracle-practices" element={<OraclePracticesTechPage />} />
+          <Route path="oracle-service" element={<Navigate to="/oracle-practices" replace />} />
+          <Route path="oracle-services" element={<Navigate to="/oracle-practices" replace />} />
           <Route path="pega-practices" element={<PegaPracticesTechPage />} />
+          <Route path="pega-service" element={<Navigate to="/pega-practices" replace />} />
+          <Route path="pega-services" element={<Navigate to="/pega-practices" replace />} />
           <Route path="veeva-practices" element={<VeevaPracticesTechPage />} />
+          <Route path="veeva-service" element={<Navigate to="/veeva-practices" replace />} />
+          <Route path="veeva-services" element={<Navigate to="/veeva-practices" replace />} />
           <Route path="cyber-security" element={<CyberSecurityTechPage />} />
           
           <Route path="careers" element={<CareersPage />} />

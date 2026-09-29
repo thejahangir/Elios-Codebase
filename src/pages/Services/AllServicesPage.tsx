@@ -101,6 +101,15 @@ const allServicesData: ServiceItem[] = [
     tags: ['Fusion Cloud', 'Oracle EBS', 'Financials & SCM', 'PL/SQL']
   },
   {
+    id: 'pega',
+    title: 'Pega Services & Digital Process Automation',
+    path: '/pega-practices',
+    category: 'Enterprise',
+    icon: <Layers className="w-7 h-7" />,
+    description: 'Enterprise Pega implementation, 1:1 Customer Decision Hub (CDH), Case Management modernization, and 24/7 L1–L4 managed services.',
+    tags: ['Pega Infinity', 'Decision Hub (CDH)', 'Case Management', 'L1-L4 Support']
+  },
+  {
     id: 'bpm',
     title: 'BPM & Intelligent Automation',
     path: '/bpm-automation',

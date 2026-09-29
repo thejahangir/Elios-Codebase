@@ -68,6 +68,7 @@ const servicesLinksCol1: FooterLink[] = [
   { name: 'All Services', path: '/services', isHeader: true },
   { name: 'SAP Enterprise Services', path: '/sap-erp' },
   { name: 'Oracle Cloud Practices', path: '/oracle-practices' },
+  { name: 'Pega Services', path: '/pega-practices' },
   { name: 'Offshore Dev Center', path: '/offshore-development-center', badge: 'Popular' },
   { name: 'Veeva Life Sciences', path: '/veeva-practices' },
   { name: 'BPM & Automation', path: '/bpm-automation' },
@@ -253,7 +254,7 @@ const Footer = () => {
                   </div>
                   <div>
                     <div className="text-xs text-gray-400">Global Sales Desk</div>
-                    <div className="text-white font-medium group-hover:text-[#C9A227] transition-colors">+91 (888) 888-8888</div>
+                    <div className="text-white font-medium group-hover:text-[#C9A227] transition-colors">+91  72599 95089</div>
                   </div>
                 </a>
 

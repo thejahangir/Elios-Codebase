@@ -170,9 +170,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email Us Directly</p>
-                    <a href="mailto:elios.tech.26@gmail.com" className="font-bold text-white hover:text-[#C9A227] transition-colors block">
-                      elios.tech.26@gmail.com
-                    </a>
+             
                     <a href="mailto:Info@eliostechinc.com" className="text-sm text-gray-300 hover:text-[#C9A227] transition-colors block">
                       Info@eliostechinc.com
                     </a>
@@ -184,7 +182,7 @@ const ContactPage = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Call Support</p>
-                    <p className="font-bold">+1 (888) 888-8888</p>
+                    <p className="font-bold">+91  72599 95089</p>
                   </div>
                 </div>
               </div>
